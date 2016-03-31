@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.4'
+#ruby-gemset=cms-gemset
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
@@ -22,6 +24,49 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+# Use bootstrap
+gem 'bootstrap-sass', '~> 3.3.4'
+
+# JQuery-turbolinks.
+gem 'jquery-turbolinks', '~> 2.1.0'
+
+# Flexible authentication solution for Rails with Warden.
+gem 'devise', '~> 3.5.1'
+
+# Rails seed data structure.
+gem 'seedbank', '~> 0.3.0'
+
+# Dynamic nested forms using jQuery.
+gem 'cocoon', '~> 1.2.6'
+
+# ClientSideValidations for Ruby on Rails.
+gem 'client_side_validations', '4.2.3'#, github: 'DavyJonesLocker/client_side_validations'
+
+# Font-Awesome.
+gem 'font-awesome-rails', '~> 4.4.0.0'
+
+# Use Will paginate de bootstrap.
+gem 'will_paginate-bootstrap', '~> 1.0.1'
+
+# Object oriented authorization for Rails applications.
+gem 'pundit', '~> 1.0.1'
+
+# A simple Ruby on Rails plugin for creating and managing a breadcrumb navigation.
+gem 'breadcrumbs_on_rails', '~> 2.3.0'
+
+# Easy upload management for ActiveRecord.
+gem 'paperclip', '~> 4.3.0'
+
+# RMagick is an interface between the Ruby programming language and the ImageMagick image processing library.
+gem 'rmagick', '~> 2.15.4', require: 'rmagick'
+
+# Easy add-on cropping
+gem 'papercrop', '~> 0.3.0'
+
+# Is an extensible searching engine for the forms.
+gem 'ransack', '~> 1.6.6'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
