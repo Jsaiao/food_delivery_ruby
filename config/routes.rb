@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :orders
+  resources :carts
+  resources :products
+  resources :restaurants
   devise_for :users,
              controllers: {sessions: 'users/sessions',
                            confirmations: 'users/confirmations',
