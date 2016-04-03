@@ -28,6 +28,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use bootstrap
 gem 'bootstrap-sass', '~> 3.3.4'
 
+# Use pace of loading process
+gem 'pace-rails', '~> 0.1.3'
+
+# Use pace of loading process
+gem 'icheck-rails', '~> 1.0.2.2'
+
 # JQuery-turbolinks.
 gem 'jquery-turbolinks', '~> 2.1.0'
 
@@ -41,10 +47,10 @@ gem 'seedbank', '~> 0.3.0'
 gem 'cocoon', '~> 1.2.6'
 
 # ClientSideValidations for Ruby on Rails.
-gem 'client_side_validations', '4.2.3'#, github: 'DavyJonesLocker/client_side_validations'
+gem 'client_side_validations', '4.2.3' #, github: 'DavyJonesLocker/client_side_validations'
 
 # Font-Awesome.
-gem 'font-awesome-rails', '~> 4.4.0.0'
+gem 'font-awesome-rails', '~> 4.5.0.1'
 
 # Use Will paginate de bootstrap.
 gem 'will_paginate-bootstrap', '~> 1.0.1'
