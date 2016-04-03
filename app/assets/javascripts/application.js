@@ -12,5 +12,18 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jQuery-ui/jquery-ui
+//= require select2/select2.full
+//= require slimScroll/jquery.slimscroll
+//= require bootstrap-sprockets
+//= require bootstrap.js
+//= require icheck
+//= require bootstrap-slider/bootstrap-slider
+//= require fastclick/fastclick
+//= require pace/pace
+//= require toastr/toastr.min
 //= require turbolinks
+//= require app
+//= require general
 //= require_tree .
+
