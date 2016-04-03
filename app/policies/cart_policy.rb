@@ -1,0 +1,2 @@
+class CartPolicy < ApplicationPolicy
+end
