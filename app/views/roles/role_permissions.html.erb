@@ -1,0 +1,40 @@
+<div class="portlet box green">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-lock"></i> <%= @role.name %>
+    </div>
+  </div>
+  <div class="portlet-body form">
+    <%= form_tag assign_permissions_url, html: {class: 'form-horizontal'} do %>
+        <div class="form-body">
+          <div class="form-group" style="margin-bottom:0;">
+            <% @permissions.each do |controller, permissions| %>
+                <h3 class="form-section"><%= controller.to_s %></h3>
+                <div class="row form-group">
+                  <% permissions.each do |permission| %>
+                      <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="check-container">
+                          <%= check_box_tag "permissions_ids[#{permission.id}]", permission.id,
+                                            @role.permissions.include?(permission),
+                                            class: 'icheck-me', data: {skin: 'square', color: 'red'} %>
+                          <div class="description">
+                            <%= permission.name %>
+                          </div>
+                        </div>
+                      </div>
+                  <% end %>
+                </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-actions">
+          <div class="row">
+            <div class="col-md-offset-3 col-md-9">
+              <%= submit_tag 'submit' %>
+              <%= link_to 'Go to roles', roles_path %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

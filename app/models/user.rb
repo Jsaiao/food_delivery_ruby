@@ -25,4 +25,17 @@ class User < ActiveRecord::Base
 
   has_many :orders
   has_one :cart
+  belongs_to :role
+  delegate :name, :scope, :key, to: :role, prefix: true
+  before_create :set_default_role
+
+  def god?
+    role and role.key == 'god'
+  end
+
+  private
+
+  def set_default_role
+    self.role ||= Role.find_by_key('default')
+  end
 end

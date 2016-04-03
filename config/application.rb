@@ -22,5 +22,11 @@ module FoodDelivery
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Contains the controllers that will be excluded from the permissions.
+    config.x.controller_exceptions = %w(Home SetLanguage PasswordExpired Confirmation Password OmniauthCallback Session Application)
+
+    # Contains controllers that must be treated different by the General Policy.
+    config.x.special_controllers = %w(home application)
   end
 end

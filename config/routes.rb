@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :roles
+  resources :permissions
   resources :orders
   resources :carts
   resources :products
@@ -17,6 +19,29 @@ Rails.application.routes.draw do
   devise_scope :user do
     authenticated :user do
       root 'home#index', as: :authenticated_root
+
+      # Shows all users.
+      get '/users', to: 'users/registrations#index', as: :user_registrations
+
+      # Create new users.
+      get '/users/new', to: 'users/registrations#new_user', as: :new_user
+      post '/users', to: 'users/registrations#create_user', as: :create_user
+
+      # Edit page for a user profile.
+      get '/users/edit', to: 'users/registrations#edit', as: :edit_profile
+
+      # Edit page for all users.
+      get '/users/:id/edit', to: 'users/registrations#edit_user', as: :edit_user
+      match '/users/:id', to: 'users/registrations#update_user', as: :update_user, via: [:patch, :put]
+
+      # Show page for a user.
+      get '/users/:id', to: 'users/registrations#show', as: :user
+
+      # Edit a user password.
+      get '/users/:id/change_password', to: 'users/registrations#change_password', as: :change_password
+      match 'save_password/:id', to: 'users/registrations#save_password', as: :save_password,
+            via: [:patch, :put]
+
     end
 
     unauthenticated do
@@ -26,4 +51,16 @@ Rails.application.routes.draw do
     authenticate :user do
     end
   end
+
+  # Gets a JS response with all controller actions.
+  get '/permissions/new/get_controller_actions', to: 'permissions#get_controller_actions', as: :get_controller_actions
+
+  # Posts seed data from permissions in relation with their role.
+  post '/permissions/generate_seeds', to: 'permissions#generate_seeds', as: :generate_seeds
+
+  # Displays a role with every permission granted.
+  get '/roles/:role_id/permissions', to: 'roles#role_permissions', as: :role_permissions
+
+  # Creates a relationship between roles and permissions.
+  post '/roles/:role_id/assign_permissions', to: 'roles#assign_permissions', as: :assign_permissions
 end

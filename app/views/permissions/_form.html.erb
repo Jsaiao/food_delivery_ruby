@@ -1,0 +1,48 @@
+<%= form_for(@permission) do |f| %>
+    <% if @permission.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@permission.errors.count, "error") %> prohibited this permission from being saved:</h2>
+
+          <ul>
+            <% @permission.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :description %><br>
+      <%= f.text_field :description %>
+    </div>
+    <div class="field">
+      <%= f.label :controller %><br>
+      <%= f.select :controller, @controllers.sort.collect { |c| [c.underscore.titleize, c] },
+                   {include_blank: 'Please select'},
+                   class: 'form-control', data: {url: get_controller_actions_url} %>
+    </div>
+    <div class="field">
+      <%= f.label :action %><br>
+      <%= f.select :action, @actions.sort.collect { |a| [a.titleize, a] },
+                   {include_blank: 'Please select'} %>
+    </div>
+
+    <div class="field">
+      <%= collection_check_boxes(:permission, :role_ids, Role.all.order(:name), :id, :name) do |b| %>
+          <div>
+            <div>
+              <%= b.label { b.check_box } %>
+              <%= b.text %>
+            </div>
+          </div>
+      <% end %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
