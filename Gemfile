@@ -43,6 +43,9 @@ gem 'devise', '~> 3.5.1'
 # Rails seed data structure.
 gem 'seedbank', '~> 0.3.0'
 
+# will_paginate is a pagination library that integrates with Ruby on Rails, Sinatra, Merb, DataMapper and Sequel.
+gem 'will_paginate', '~> 3.1.0'
+
 # Dump (parts) of your database to db/seeds.rb to get a headstart creating a meaningful seeds.rb file.
 gem 'seed_dump', '~> 3.2', '>= 3.2.4'
 
