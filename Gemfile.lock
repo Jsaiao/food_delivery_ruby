@@ -177,6 +177,9 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    seed_dump (3.2.4)
+      activerecord (>= 4)
+      activesupport (>= 4)
     seedbank (0.3.0)
     spring (1.6.4)
     sprockets (3.5.2)
@@ -232,6 +235,7 @@ DEPENDENCIES
   rmagick (~> 2.15.4)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  seed_dump (~> 3.2, >= 3.2.4)
   seedbank (~> 0.3.0)
   spring
   sqlite3

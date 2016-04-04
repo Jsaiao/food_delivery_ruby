@@ -43,6 +43,9 @@ gem 'devise', '~> 3.5.1'
 # Rails seed data structure.
 gem 'seedbank', '~> 0.3.0'
 
+# Dump (parts) of your database to db/seeds.rb to get a headstart creating a meaningful seeds.rb file.
+gem 'seed_dump', '~> 3.2', '>= 3.2.4'
+
 # Dynamic nested forms using jQuery.
 gem 'cocoon', '~> 1.2.6'
 

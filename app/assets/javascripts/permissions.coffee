@@ -11,9 +11,9 @@ $(window).bind 'page:change', ->
 
   # When the Generate seeds button is clicked, makes an ajax request
   $('.generate-seed').on 'click', ->
-    Metronic.blockUI
-      boxed: true
-      message: I18n.processing_message
+    #Metronic.blockUI
+    #  boxed: true
+    #  message: I18n.processing_message
     $.ajax
       url: '/permissions/generate_seeds'
       type: 'POST'
@@ -35,7 +35,7 @@ $(window).bind 'page:change', ->
       window.location.replace '#'
       if typeof window.history.replaceState == 'function'
         history.replaceState {}, '', window.location.href.slice(0, -1)
-      toastr.info I18n.seeds_generated
+      #toastr.info I18n.seeds_generated
     return
 
   PermissionMessage()
