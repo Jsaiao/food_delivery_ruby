@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /users
   def index
-    @users = policy_scope(User).paginate(page: params[:page], per_page: 20)
+    @users = policy_scope(User).paginate(page: params[:page], per_page: 15)
   end
 
   # GET /users/1

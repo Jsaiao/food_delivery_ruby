@@ -12,7 +12,7 @@
       </div>
     </div>
     <!-- search form -->
-    <form action="#" method="get" class="sidebar-form">
+    <form action="javascript:;" method="get" class="sidebar-form">
       <div class="input-group">
         <input type="text" name="q" class="form-control" placeholder="Search...">
               <span class="input-group-btn">
@@ -27,7 +27,7 @@
       <li class="header">Main Navigation</li>
       <% if has_policy(Cart, %w(new index)) %>
           <li class="treeview">
-            <a href="#">
+            <a href="javascript:;">
               <i class="fa fa-shopping-cart"></i> <span>Carts</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
@@ -42,7 +42,7 @@
       <% end %>
       <% if has_policy(Order, %w(new index)) %>
           <li class="treeview">
-            <a href="#">
+            <a href="javascript:;">
               <i class="fa fa-th-list"></i> <span>Orders</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
@@ -57,7 +57,7 @@
       <% end %>
       <% if has_policy(Product, %w(new index)) %>
           <li class="treeview">
-            <a href="#">
+            <a href="javascript:;">
               <i class="fa fa-leaf"></i> <span>Food Dishes</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
@@ -72,7 +72,7 @@
       <% end %>
       <% if has_policy(Restaurant, %w(new index)) %>
           <li class="treeview">
-            <a href="#">
+            <a href="javascript:;">
               <i class="fa fa-map-marker"></i> <span>Restaurants</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
@@ -89,8 +89,8 @@
       <li class="header">Access</li>
       <% if has_policy(Permission, %w(new index)) %>
           <li class="treeview">
-            <a href="#">
-              <i class="fa fa-map-marker"></i> <span>Permissions</span> <i class="fa fa-angle-left pull-right"></i>
+            <a href="javascript:;">
+              <i class="fa fa-ban"></i> <span>Permissions</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
               <li>
@@ -104,8 +104,8 @@
       <% end %>
       <% if has_policy(Role, %w(new index)) %>
           <li class="treeview">
-            <a href="#">
-              <i class="fa fa-map-marker"></i> <span>Roles</span> <i class="fa fa-angle-left pull-right"></i>
+            <a href="javascript:;">
+              <i class="fa fa-lock"></i> <span>Roles</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
               <li>
@@ -119,8 +119,8 @@
       <% end %>
       <% if has_policy(User, %w(new_user index), 'Users::Registration') %>
           <li class="treeview">
-            <a href="#">
-              <i class="fa fa-map-marker"></i> <span>Users</span> <i class="fa fa-angle-left pull-right"></i>
+            <a href="javascript:;">
+              <i class="fa fa-users"></i> <span>Users</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
               <li>
