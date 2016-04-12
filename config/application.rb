@@ -28,5 +28,8 @@ module FoodDelivery
 
     # Contains controllers that must be treated different by the General Policy.
     config.x.special_controllers = %w(home application)
+
+    config.web_console.whiny_requests = false
+
   end
 end
