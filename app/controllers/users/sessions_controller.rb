@@ -1,5 +1,7 @@
 class Users::SessionsController < Devise::SessionsController
   layout 'out_system'
+  skip_before_filter :verify_authenticity_token, only: :create_mobile_session
+
   # before_filter :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -11,6 +13,19 @@ class Users::SessionsController < Devise::SessionsController
   # def create
   #   super
   # end
+
+  def create_mobile_session
+    if User.exists?(email: params[:email])
+      user = User.find_by(email: params[:email])
+      if user.valid_password? params[:password]
+        render nothing: true, status: :ok
+      else
+        render status: 404
+      end
+    else
+      render status: 404
+    end
+  end
 
   # DELETE /resource/sign_out
   # def destroy

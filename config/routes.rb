@@ -17,6 +17,8 @@ Rails.application.routes.draw do
                           sign_out: 'logout'}
 
   devise_scope :user do
+    post '/sign_in/mobile', to: 'users/sessions#create_mobile_session', as: :create_mobile_session
+
     authenticated :user do
       root 'home#index', as: :authenticated_root
 
