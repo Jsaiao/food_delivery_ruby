@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160403061505) do
+ActiveRecord::Schema.define(version: 20160414044942) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "phone_number"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
 
   create_table "carts", force: :cascade do |t|
     t.integer  "user_id"
@@ -68,6 +82,7 @@ ActiveRecord::Schema.define(version: 20160403061505) do
     t.string   "name"
     t.text     "description"
     t.float    "price"
+    t.boolean  "active"
     t.integer  "restaurant_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -78,7 +93,6 @@ ActiveRecord::Schema.define(version: 20160403061505) do
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "address"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

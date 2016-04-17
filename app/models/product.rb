@@ -6,6 +6,7 @@
 #  name          :string
 #  description   :text
 #  price         :float
+#  active        :boolean
 #  restaurant_id :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
