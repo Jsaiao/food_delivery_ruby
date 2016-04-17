@@ -4,6 +4,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.float :price
+      t.boolean :active
       t.references :restaurant, index: true, foreign_key: true
 
       t.timestamps null: false

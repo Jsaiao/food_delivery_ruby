@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: permissions
+#
+#  id          :integer          not null, primary key
+#  name        :string
+#  description :text
+#  action      :string
+#  controller  :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 class Permission < ActiveRecord::Base
   has_many :permission_role, dependent: :destroy
   has_many :roles, through: :permission_role

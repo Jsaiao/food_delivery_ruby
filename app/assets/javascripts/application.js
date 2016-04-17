@@ -17,6 +17,7 @@
 //= require slimScroll/jquery.slimscroll
 //= require bootstrap-sprockets
 //= require bootstrap.js
+//= require cocoon
 //= require icheck
 //= require bootstrap-slider/bootstrap-slider
 //= require fastclick/fastclick

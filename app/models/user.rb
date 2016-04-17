@@ -15,6 +15,7 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  role_id                :integer
 #
 
 class User < ActiveRecord::Base
@@ -24,10 +25,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :orders
-  has_one :cart
+  has_many :carts
+  has_many :addresses, as: :addressable
+
   belongs_to :role
   delegate :name, :scope, :key, to: :role, prefix: true
   before_create :set_default_role
+
+  accepts_nested_attributes_for :addresses, allow_destroy: true, reject_if: :all_blank
 
   def god?
     role and role.key == 'god'
