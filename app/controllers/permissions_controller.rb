@@ -4,7 +4,7 @@ class PermissionsController < ApplicationController
   # GET /permissions
   # GET /permissions.json
   def index
-    @permissions = Permission.all.paginate(page: params[:page], per_page: 20)
+    @permissions = Permission.all.paginate(page: params[:page], per_page: 15)
   end
 
   # GET /permissions/1

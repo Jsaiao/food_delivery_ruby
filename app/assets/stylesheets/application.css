@@ -24,6 +24,7 @@
  *= require AdminLTE
  *= require _all-skins
  *= require custom-AdminLTE
+ *= require pagination
  *= require_tree .
  *= require_self
  */

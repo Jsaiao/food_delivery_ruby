@@ -1,33 +1,44 @@
-<%= form_for(@product) do |f| %>
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
-      <ul>
-      <% @product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="box">
+  <div class="box-header with-border">
+    <h3 class="box-title">Food Dishes</h3>
+    <div class="box-tools">
+      <%= link_to '<i class="fa fa-arrow-left"></i> Back'.html_safe, products_path, class: 'btn btn-xs btn-flat bg-gray' %>
     </div>
+  </div>
+  <!-- /.box-header -->
+  <!-- form start -->
+  <%= form_for(@product, html: {class: 'form-horizontal'}) do |f| %>
+      <div class="box-body">
+        <div class="form-group">
+          <%= f.label :name, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.text_field :description, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :price, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.text_field :price, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :restaurant_id, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.text_field :restaurant_id, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer">
+        <div class="col-sm-offset-2">
+          <%= f.button 'Send', class: 'btn btn-primary' %>
+        </div>
+      </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :restaurant_id %><br>
-    <%= f.text_field :restaurant_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
