@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414044942) do
+ActiveRecord::Schema.define(version: 20160424174845) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street"
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 20160414044942) do
     t.datetime "updated_at",       null: false
   end
 
-  add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+  add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
 
   create_table "carts", force: :cascade do |t|
     t.integer  "user_id"
@@ -35,8 +38,8 @@ ActiveRecord::Schema.define(version: 20160414044942) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "carts", ["product_id"], name: "index_carts_on_product_id"
-  add_index "carts", ["user_id"], name: "index_carts_on_user_id"
+  add_index "carts", ["product_id"], name: "index_carts_on_product_id", using: :btree
+  add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
 
   create_table "order_products", force: :cascade do |t|
     t.integer  "order_id"
@@ -47,8 +50,8 @@ ActiveRecord::Schema.define(version: 20160414044942) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "order_products", ["order_id"], name: "index_order_products_on_order_id"
-  add_index "order_products", ["product_id"], name: "index_order_products_on_product_id"
+  add_index "order_products", ["order_id"], name: "index_order_products_on_order_id", using: :btree
+  add_index "order_products", ["product_id"], name: "index_order_products_on_product_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
@@ -57,7 +60,7 @@ ActiveRecord::Schema.define(version: 20160414044942) do
     t.datetime "updated_at",       null: false
   end
 
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "permission_roles", force: :cascade do |t|
     t.integer  "role_id"
@@ -66,8 +69,8 @@ ActiveRecord::Schema.define(version: 20160414044942) do
     t.datetime "updated_at",    null: false
   end
 
-  add_index "permission_roles", ["permission_id"], name: "index_permission_roles_on_permission_id"
-  add_index "permission_roles", ["role_id"], name: "index_permission_roles_on_role_id"
+  add_index "permission_roles", ["permission_id"], name: "index_permission_roles_on_permission_id", using: :btree
+  add_index "permission_roles", ["role_id"], name: "index_permission_roles_on_role_id", using: :btree
 
   create_table "permissions", force: :cascade do |t|
     t.string   "name"
@@ -84,11 +87,15 @@ ActiveRecord::Schema.define(version: 20160414044942) do
     t.float    "price"
     t.boolean  "active"
     t.integer  "restaurant_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
-  add_index "products", ["restaurant_id"], name: "index_products_on_restaurant_id"
+  add_index "products", ["restaurant_id"], name: "index_products_on_restaurant_id", using: :btree
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"
@@ -120,10 +127,22 @@ ActiveRecord::Schema.define(version: 20160414044942) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "role_id"
+    t.integer  "restaurant_id"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["role_id"], name: "index_users_on_role_id"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["restaurant_id"], name: "index_users_on_restaurant_id", using: :btree
+  add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
+  add_foreign_key "carts", "products"
+  add_foreign_key "carts", "users"
+  add_foreign_key "order_products", "orders"
+  add_foreign_key "order_products", "products"
+  add_foreign_key "orders", "users"
+  add_foreign_key "permission_roles", "permissions"
+  add_foreign_key "permission_roles", "roles"
+  add_foreign_key "products", "restaurants"
+  add_foreign_key "users", "restaurants"
+  add_foreign_key "users", "roles"
 end

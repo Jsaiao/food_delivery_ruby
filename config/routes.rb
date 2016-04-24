@@ -65,4 +65,7 @@ Rails.application.routes.draw do
 
   # Creates a relationship between roles and permissions.
   post '/roles/:role_id/assign_permissions', to: 'roles#assign_permissions', as: :assign_permissions
+
+  get '/restaurants_mobile', to: 'restaurants#index_mobile', as: :restaurants_mobile
+  get '/products_mobile/:restaurant_id', to: 'products#index_mobile', as: :products_mobile
 end

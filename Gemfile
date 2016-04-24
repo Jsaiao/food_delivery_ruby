@@ -79,6 +79,7 @@ gem 'papercrop', '~> 0.3.0'
 # Is an extensible searching engine for the forms.
 gem 'ransack', '~> 1.6.6'
 
+gem 'pg'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

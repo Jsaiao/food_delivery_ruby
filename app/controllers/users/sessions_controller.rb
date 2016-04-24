@@ -18,7 +18,7 @@ class Users::SessionsController < Devise::SessionsController
     if User.exists?(email: params[:email])
       user = User.find_by(email: params[:email])
       if user.valid_password? params[:password]
-        render nothing: true, status: :ok
+        render json: user, status: :ok
       else
         render status: 404
       end

@@ -5,8 +5,8 @@ after :roles do
   User.delete_all
 
 # Restarts ids to 1.
-  #ActiveRecord::Base.connection.reset_pk_sequence!('users')
-  ActiveRecord::Base.connection.execute("DELETE from sqlite_sequence where name = 'users'")
+  ActiveRecord::Base.connection.reset_pk_sequence!('users')
+  #ActiveRecord::Base.connection.execute("DELETE from sqlite_sequence where name = 'users'")
 
 
 # Content.
