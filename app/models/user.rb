@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   has_many :addresses, as: :addressable
 
   belongs_to :role
+  belongs_to :restaurant
   delegate :name, :scope, :key, to: :role, prefix: true
   before_create :set_default_role
 

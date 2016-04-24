@@ -64,7 +64,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    super
+    prev_unconfirmed_email = @user.unconfirmed_email if @user.respond_to?(:unconfirmed_email)
+    if @user.update_attributes(account_update_params)
+      if is_flashing_format?
+        flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ? :update_needs_confirmation : :updated
+        set_flash_message :notice, flash_key
+      end
+      set_flash_message :notice, :updated
+      sign_in @user, bypass: true
+      redirect_to user_registration_path(@user)
+    else
+      render 'edit'
+    end
   end
 
   # PATCH/PUT /roles/1
