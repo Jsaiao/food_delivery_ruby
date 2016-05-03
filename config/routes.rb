@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :orders
   resources :carts
   resources :products
+
+  get '/restaurants/:id/dishes', to: 'restaurants#dishes', as: :restaurant_dishes
+
   resources :restaurants
   devise_for :users,
              controllers: {sessions: 'users/sessions',
@@ -68,4 +71,10 @@ Rails.application.routes.draw do
 
   get '/restaurants_mobile', to: 'restaurants#index_mobile', as: :restaurants_mobile
   get '/products_mobile/:restaurant_id', to: 'products#index_mobile', as: :products_mobile
+
+  post '/add_product/:id', to: 'products#add_product_to_cart', as: :add_product_to_cart
+  post '/set_quantity/:id/:quantity', to: 'products#set_quantity', as: :set_quantity
+  post '/one_less_product/:id', to: 'products#one_less_product', as: :one_less_product
+  post '/delete_product_from_cart/:id', to: 'products#delete_product_from_cart', as: :delete_product_from_cart
+  get '/user_cart/:id', to: 'carts#user_cart', as: :user_cart
 end

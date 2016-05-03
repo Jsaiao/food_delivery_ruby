@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurant, only: [:show, :edit, :update, :destroy, :dishes]
   skip_before_action :authenticate_user!, :is_authorized, only: [:index_mobile]
 
   # GET /restaurants
@@ -10,6 +10,10 @@ class RestaurantsController < ApplicationController
 
   def index_mobile
     render json: Restaurant.all, status: :ok
+  end
+
+  def dishes
+    @products = @restaurant.products.paginate(page: params[:page], per_page: 15)
   end
 
   # GET /restaurants/1
