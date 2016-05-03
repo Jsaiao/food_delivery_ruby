@@ -40,6 +40,18 @@
             </ul>
           </li>
       <% end %>
+      <% if current_user.role.key == 'client' %>
+          <li class="treeview">
+            <a href="javascript:;">
+              <i class="fa fa-shopping-cart"></i> <span>Carts</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li>
+                <%= link_item '<i class="fa fa-circle-o"></i> View Cart'.html_safe, user_cart_path(current_user) %>
+              </li>
+            </ul>
+          </li>
+      <% end %>
       <% if has_policy(Order, %w(new index)) %>
           <li class="treeview">
             <a href="javascript:;">

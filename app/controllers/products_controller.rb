@@ -1,12 +1,17 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :add_product_to_cart,
+                                     :set_quantity, :one_less_product, :delete_product_from_cart]
   skip_before_action :authenticate_user!, :is_authorized, only: [:index_mobile]
 
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all.paginate(page: params[:page], per_page: 15)
+    if current_user.has_restaurant_scope?
+      @products = current_user.restaurant.products.paginate(page: params[:page], per_page: 15)
+    else
+      @products = Product.all.paginate(page: params[:page], per_page: 15)
+    end
   end
 
   def index_mobile
@@ -69,14 +74,54 @@ class ProductsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
+  def add_product_to_cart
+    if current_user.carts.where(product_id: @product.id).empty?
+      @cart = current_user.carts.create(product_id: @product.id, quantity: 1)
+    else
+      @cart = current_user.carts.where(product_id: @product.id).first
+      @cart.quantity += 1
+      @cart.save
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def product_params
-      params.require(:product).permit(:name, :description, :price, :restaurant_id, :image, :active)
+    respond_to do |format|
+      format.js {render template: 'carts/update_cart.js.erb'}
     end
+  end
+
+  def set_quantity
+    @cart = current_user.carts.where(product_id: @product.id).first.update(quantity: params[:quantity])
+
+    respond_to do |format|
+      format.js {render template: 'carts/update_cart.js.erb'}
+    end
+  end
+
+  def one_less_product
+    @cart = current_user.carts.where(product_id: @product.id).first
+    @cart.quantity -= 1
+    @cart.save
+
+    respond_to do |format|
+      format.js {render template: 'carts/update_cart.js.erb'}
+    end
+  end
+
+  def delete_product_from_cart
+    @cart = current_user.carts.where(product_id: @product.id).first.destroy
+
+    respond_to do |format|
+      format.js {render template: 'carts/update_cart.js.erb'}
+    end
+  end
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def product_params
+    params.require(:product).permit(:name, :description, :price, :restaurant_id, :image, :active)
+  end
 end

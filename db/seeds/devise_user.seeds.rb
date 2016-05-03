@@ -11,4 +11,7 @@ after :roles do
 
 # Content.
   User.create(email: 'god@example.com', password: 'password', role: Role.find_by_key('god'), sign_in_count: 0)
+  User.create(email: 'res_admin@example.com', password: 'password', role: Role.find_by_key('res_admin'),
+              sign_in_count: 0, restaurant_id: 1)
+  User.create(email: 'client@example.com', password: 'password', role: Role.find_by_key('client'), sign_in_count: 0)
 end

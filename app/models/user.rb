@@ -39,6 +39,14 @@ class User < ActiveRecord::Base
     role and role.key == 'god'
   end
 
+  def has_total_scope?
+    role_scope == 'total'
+  end
+
+  def has_restaurant_scope?
+    role_scope == 'restaurant'
+  end
+
   private
 
   def set_default_role

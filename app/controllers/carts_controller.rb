@@ -61,6 +61,11 @@ class CartsController < ApplicationController
     end
   end
 
+  def user_cart
+    @user = User.find(params[:id])
+    @cart_products = @user.carts
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart

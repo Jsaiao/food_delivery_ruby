@@ -50,5 +50,11 @@ Permission.create!([
   {name: "Mostrar Listado De Roles", description: "Permite mostrar un listado de los roles.", action: "index", controller: "Roles"},
   {name: "Nuevo Rol", description: "Permite visualizar la vista nuevo rol.", action: "new", controller: "Roles"},
   {name: "Mostrar Detalles De Un Rol", description: "Permite mostrar los detalles de un rol.", action: "show", controller: "Roles"},
-  {name: "Actualizar Rol", description: "Permite actualizar un rol.", action: "update", controller: "Roles"}
+  {name: "Actualizar Rol", description: "Permite actualizar un rol.", action: "update", controller: "Roles"},
+  {name: "Listado De Productos De Un Restaurante", description: "Listado de productos de un restaurante", action: "dishes", controller: "Restaurants"},
+  {name: "Agregar Producto", description: "Agregar producto", action: "add_product_to_cart", controller: "Products"},
+  {name: "Eliminar Producto Del Carro", description: "Eliminar producto del carro", action: "delete_product_from_cart", controller: "Products"},
+  {name: "Remover Uno A La Cantidad Del Producto Del Carro", description: "Remover uno a la cantidad del producto del carro", action: "one_less_product", controller: "Products"},
+  {name: "Cantidad Custom De Producto En El Carro", description: "Cantidad custom de producto en el carro", action: "set_quantity", controller: "Products"},
+  {name: "Ver Carro De Usuario", description: "Ver carro de usuario", action: "user_cart", controller: "Carts"}
 ])
