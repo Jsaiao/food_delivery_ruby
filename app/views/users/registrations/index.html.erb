@@ -21,7 +21,7 @@
       <table class="table table-hover">
         <thead>
         <tr>
-          <th style="width: 10px">#</th>
+          <th style="width: 10px"></th>
           <th>Email</th>
           <th>Role</th>
           <th>Actions</th>
@@ -39,6 +39,7 @@
                   <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_user_path(user), class: 'btn btn-flat btn-xs bg-blue' %>
                   <%= link_to '<i class="fa fa-trash"></i>'.html_safe, user, method: :delete,
                               data: {confirm: 'Are you sure?'}, class: 'btn btn-flat btn-xs bg-red' %>
+                  <%= link_to '<i class="fa fa-comment-o "></i>'.html_safe, 'javascript:;', class: 'btn btn-flat btn-xs bg-yellow start-conversation', data: {sid: current_user.id, rip: user.id} %>
                 </div>
               </td>
             </tr>

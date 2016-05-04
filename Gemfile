@@ -77,7 +77,13 @@ gem 'papercrop', '~> 0.3.0'
 # Is an extensible searching engine for the forms.
 gem 'ransack', '~> 1.6.6'
 
-gem 'pg'
+gem 'pg', '~> 0.18.4'
+
+# Private Pub is a Ruby gem for use with Rails to publish and subscribe to messages through Faye.
+gem 'private_pub', '~> 1.0.3'
+
+# A thin and fast web server
+gem 'thin', '~> 1.6.4'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -9,7 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_filter :configure_sign_up_params, only: [:create]
   # before_filter :configure_account_update_params, only: [:update]
 
-  # GET /users
+  # GET /usersx
   def index
     @users = policy_scope(User).paginate(page: params[:page], per_page: 15)
   end
@@ -81,12 +81,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PATCH/PUT /roles/1
   # PATCH/PUT /roles/1.json
   def update_user
+    prev_unconfirmed_email = @user.unconfirmed_email if @user.respond_to?(:unconfirmed_email)
+
     if @user.update(account_update_params)
-      format.html { redirect_to user_registrations_path, notice: 'User updated correctly' }
-      format.json { render :show, status: :created, location: @user }
+
+      if is_flashing_format?
+        flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ? :update_needs_confirmation : :updated
+        set_flash_message :notice, flash_key
+      end
+      flash.now[:notice] = 'User updated correctly'
+      redirect_to user_registrations_path
     else
-      format.html { render :new_user }
-      format.json { render json: @user.errors, status: :unprocessable_entity }
+      render 'edit_user'
     end
   end
 
@@ -143,7 +149,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def account_update_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :username, :first_name, :last_name,
-                                 :maiden_name, :role_id)
+    params.require(:user).permit(:email, :password, :password_confirmation, :role_id)
   end
 end

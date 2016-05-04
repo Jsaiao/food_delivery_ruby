@@ -16,9 +16,11 @@
 //= require select2/select2.full
 //= require slimScroll/jquery.slimscroll
 //= require bootstrap-sprockets
+//= require private_pub
 //= require bootstrap.js
 //= require cocoon
 //= require icheck
+//= require chat
 //= require bootstrap-slider/bootstrap-slider
 //= require fastclick/fastclick
 //= require pace/pace
