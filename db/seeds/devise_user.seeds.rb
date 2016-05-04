@@ -1,4 +1,4 @@
-after :roles do
+after :roles, :restaurants  do
   puts '==> Creating the \'god user\'...'
 
 # Deletes all existing records.

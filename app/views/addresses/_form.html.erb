@@ -1,0 +1,51 @@
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <h3 class="box-title">Address</h3>
+    <div class="box-tools">
+    </div>
+  </div>
+
+
+  <!-- /.box-header -->
+  <!-- form start -->
+  <%= form_for(@address, html: {class: 'form-horizontal'}) do |f| %>
+      <div class="box-body">
+        <div class="form-group">
+          <%= f.label :street, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.text_field :street, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :city, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.text_field :city, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :state, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.text_field :state, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :zipcode, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.text_field :zipcode, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :phone_number, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.text_field :phone_number, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer">
+        <div class="col-sm-offset-2">
+          <%= f.button 'Send', class: 'btn btn-primary' %>
+        </div>
+      </div>
+  <% end %>
+</div>

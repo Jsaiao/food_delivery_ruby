@@ -1,0 +1,2 @@
+class AddressPolicy < ApplicationPolicy
+end

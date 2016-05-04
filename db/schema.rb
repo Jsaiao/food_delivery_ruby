@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424174845) do
+ActiveRecord::Schema.define(version: 20160504021652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,8 +58,10 @@ ActiveRecord::Schema.define(version: 20160424174845) do
     t.string   "reference_number"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "address_id"
   end
 
+  add_index "orders", ["address_id"], name: "index_orders_on_address_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "permission_roles", force: :cascade do |t|
@@ -139,6 +141,7 @@ ActiveRecord::Schema.define(version: 20160424174845) do
   add_foreign_key "carts", "users"
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
+  add_foreign_key "orders", "addresses"
   add_foreign_key "orders", "users"
   add_foreign_key "permission_roles", "permissions"
   add_foreign_key "permission_roles", "roles"

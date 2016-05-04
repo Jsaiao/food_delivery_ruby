@@ -24,7 +24,8 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    @order = current_user.orders.new(order_params)
+    @order.reference_number = "#{Time.now.to_i}_#{current_user.id}"
 
     respond_to do |format|
       if @order.save
@@ -69,6 +70,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:user_id, :reference_number)
+      params.require(:order).permit(:user_id, :reference_number, :address_id)
     end
 end

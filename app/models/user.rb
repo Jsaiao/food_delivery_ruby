@@ -16,6 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  role_id                :integer
+#  restaurant_id          :integer
 #
 
 class User < ActiveRecord::Base

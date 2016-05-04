@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :carts
   resources :products
+  resources :addresses
 
   get '/restaurants/:id/dishes', to: 'restaurants#dishes', as: :restaurant_dishes
 
@@ -76,5 +77,7 @@ Rails.application.routes.draw do
   post '/set_quantity/:id/:quantity', to: 'products#set_quantity', as: :set_quantity
   post '/one_less_product/:id', to: 'products#one_less_product', as: :one_less_product
   post '/delete_product_from_cart/:id', to: 'products#delete_product_from_cart', as: :delete_product_from_cart
-  get '/user_cart/:id', to: 'carts#user_cart', as: :user_cart
+  get '/user_cart', to: 'carts#user_cart', as: :user_cart
+  get '/place_order', to: 'carts#place_order', as: :place_order
+  post '/make_order/:address_id', to: 'carts#make_order', as: :make_order
 end

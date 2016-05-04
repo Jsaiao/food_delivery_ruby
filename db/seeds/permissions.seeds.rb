@@ -56,5 +56,14 @@ Permission.create!([
   {name: "Eliminar Producto Del Carro", description: "Eliminar producto del carro", action: "delete_product_from_cart", controller: "Products"},
   {name: "Remover Uno A La Cantidad Del Producto Del Carro", description: "Remover uno a la cantidad del producto del carro", action: "one_less_product", controller: "Products"},
   {name: "Cantidad Custom De Producto En El Carro", description: "Cantidad custom de producto en el carro", action: "set_quantity", controller: "Products"},
-  {name: "Ver Carro De Usuario", description: "Ver carro de usuario", action: "user_cart", controller: "Carts"}
+  {name: "Ver Carro De Usuario", description: "Ver carro de usuario", action: "user_cart", controller: "Carts"},
+  {name: "Vista Para Hacer El Pedido", description: "Vista para hacer el pedido", action: "place_order", controller: "Carts"},
+  {name: "Hacer Pedido", description: "Hacer pedido", action: "make_order", controller: "Carts"},
+  {name: "Crear Direccion", description: "Crear direccion", action: "create", controller: "Addresses"},
+  {name: "Eliminar Direccion", description: "Eliminar direccion", action: "destroy", controller: "Addresses"},
+  {name: "Editar Direccion", description: "Editar direccion", action: "edit", controller: "Addresses"},
+  {name: "Ver Direcciones", description: "Ver direcciones", action: "index", controller: "Addresses"},
+  {name: "Nueva Direccion", description: "Nueva direccion", action: "new", controller: "Addresses"},
+  {name: "Ver Direccion", description: "Ver direccion", action: "show", controller: "Addresses"},
+  {name: "Actualizar Direccion", description: "Actualizar direccion", action: "update", controller: "Addresses"}
 ])
