@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   resources :products
   resources :addresses
 
+  resources :conversations do
+    resources :messages
+  end
+
   get '/restaurants/:id/dishes', to: 'restaurants#dishes', as: :restaurant_dishes
 
   resources :restaurants
