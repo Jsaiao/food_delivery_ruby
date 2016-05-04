@@ -62,8 +62,19 @@ class CartsController < ApplicationController
   end
 
   def user_cart
-    @user = User.find(params[:id])
+    @user = current_user
     @cart_products = @user.carts
+  end
+
+  def place_order
+    @user = current_user
+    @cart_products = @user.carts
+    @order = Order.new
+  end
+
+  def make_order
+    @address = Address.find(params[:address_id])
+    @cart = current_user.carts
   end
 
   private
