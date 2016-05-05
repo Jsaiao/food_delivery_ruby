@@ -15,9 +15,8 @@
 //= require jQuery-ui/jquery-ui
 //= require select2/select2.full
 //= require slimScroll/jquery.slimscroll
-//= require bootstrap-sprockets
 //= require private_pub
-//= require bootstrap.js
+//= require bootstrap
 //= require cocoon
 //= require icheck
 //= require chat
