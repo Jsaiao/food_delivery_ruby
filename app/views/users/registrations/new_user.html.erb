@@ -4,7 +4,7 @@
 <section class="content">
   <div class="box box-primary">
     <div class="box-header with-border">
-      <h3 class="box-title">User</h3>
+      <h3 class="box-title">Userssss</h3>
       <div class="box-tools">
         <%= link_to '<i class="fa fa-arrow-left"></i> Back'.html_safe, user_registrations_path,
                     class: 'btn btn-xs btn-flat bg-gray' %>
@@ -12,13 +12,43 @@
     </div>
     <!-- /.box-header -->
     <!-- form start -->
-    <%= form_for(@user, url: create_user_path(@user), html: {class: 'form-horizontal'}) do |f| %>
+    <%= form_for(@user, url: create_user_inside_path(@user), html: {class: 'form-horizontal'}, validate: true) do |f| %>
         <div class="box-body">
           <div class="form-group">
             <%= f.label :email, class: 'col-sm-2 control-label' %>
             <div class="col-sm-10">
               <%= f.text_field :email, class: 'form-control' %>
             </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :first_name, class: 'col-sm-2 control-label' %>
+            <div class="col-sm-10">
+              <%= f.text_field :first_name, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :last_name, class: 'col-sm-2 control-label' %>
+            <div class="col-sm-10">
+              <%= f.text_field :last_name, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :mother_last_name, class: 'col-sm-2 control-label' %>
+            <div class="col-sm-10">
+              <%= f.text_field :mother_last_name, class: 'form-control' %>
+            </div>
+          </div>
+          <div>
+            <%= f.fields_for :addresses do |address| %>
+                <%= render '/shared/address_fields', f: address %>
+            <% end %>
+            <%= link_to_add_association "<i class='fa fa-plus'></i> Add Address".html_safe, f,
+                                        :addresses, class: 'form-control',
+                                        partial: '/shared/address_fields' %>
+          </div>
+          <div class="field">
+            <%= f.label :role_id %>
+            <%= f.collection_select(:role_id, Role.all, :id, :name, {prompt: 'Please select'}, {class: 'form-control'}) %>
           </div>
           <div class="form-group">
             <%= f.label :password, class: 'col-sm-2 control-label' %>

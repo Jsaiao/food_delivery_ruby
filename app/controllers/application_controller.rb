@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   # If the user doesn't have permission to perform an action is redirected.
   def user_not_authorized
-    flash[:alert] = I18n.t('pundit.default')
+    flash[:alert] = 'You cannot perform this action.'
     redirect_to(request.referrer || authenticated_root_path || unauthenticated_root_path)
   end
 
