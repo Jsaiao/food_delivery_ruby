@@ -21,21 +21,44 @@
       <table class="table table-hover">
         <thead>
         <tr>
+          <th>#</th>
           <th>Product</th>
           <th>Price</th>
-          <th>Quantity</th>
-          <th>Total</th>
+          <th class="center">Quantity</th>
+          <th class="center">Subtotal</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="cart">
+        <% number=1 %>
         <% @cart_products.each do |cart| %>
             <tr>
+              <td><%= number %></td>
               <td><%= cart.product.name %></td>
-              <td><%= cart.product.price %></td>
-              <td><%= cart.quantity %></td>
-              <td><%= cart.product.price %></td>
+              <td class="product-price"><%= number_to_currency(cart.product.price) %></td>
+              <td class="center">
+                <div class="inline-flex">
+                  <button class="btn btn-flat btn-xs add-product" data-id="<%= cart.product.id %>">
+                    <i class="fa fa-plus"></i>
+                  </button>
+                  <div class="quantity">
+                    <%= cart.quantity %>
+                  </div>
+                  <button class="btn btn-flat btn-xs">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                </div>
+              </td>
+              <td class="center subtotal"><%= number_to_currency(cart.product.price * cart.quantity) %></td>
             </tr>
+            <% number+=1 %>
         <% end %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="center"><b>Total:</b></td>
+          <td class="center"></td>
+        </tr>
         </tbody>
       </table>
     </div><!-- /.box-body -->

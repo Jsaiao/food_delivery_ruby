@@ -9,12 +9,12 @@ $(window).bind('page:change', function () {
     $.AdminLTE.layout.fix();
     $.AdminLTE.pushMenu.activate("[data-toggle='offcanvas']");
     $.AdminLTE.controlSidebar.activate("[data-toggle='control-sidebar']");
+});
 
-    $('.dropdown-toggle').on('click', function () {
-        if ($(this).parent().hasClass('open')) {
-            $(this).parent().removeClass('open');
-        } else {
-            $(this).parent().addClass('open');
-        }
-    });
+$('.dropdown-toggle').on('click', function () {
+    if ($(this).parent().hasClass('open')) {
+        $(this).parent().removeClass('open');
+    } else {
+        $(this).parent().addClass('open');
+    }
 });

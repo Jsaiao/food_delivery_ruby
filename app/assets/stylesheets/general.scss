@@ -1,0 +1,38 @@
+.price {
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 20px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-weight: bold;
+}
+
+.clear {
+  .modal-dialog > .modal-content > .modal-body {
+    background-color: #F1F1F1 !important;
+    div {
+      color: black;
+    }
+  }
+}
+
+.left {
+  text-align: left !important;
+}
+
+.right {
+  text-align: right !important;
+}
+
+.center {
+  text-align: center !important;
+}
+
+.inline-flex {
+  display: inline-flex;
+  div {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
