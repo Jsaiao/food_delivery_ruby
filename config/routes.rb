@@ -29,29 +29,6 @@ Rails.application.routes.draw do
 
     authenticated :user do
       root 'home#index', as: :authenticated_root
-
-      # Shows all users.
-      get '/users', to: 'users/registrations#index', as: :user_registrations
-
-      # Create new users.
-      get '/users/new', to: 'users/registrations#new_user', as: :new_user
-      post '/users', to: 'users/registrations#create_user', as: :create_user
-
-      # Edit page for a user profile.
-      get '/users/edit', to: 'users/registrations#edit', as: :edit_profile
-
-      # Edit page for all users.
-      get '/users/:id/edit', to: 'users/registrations#edit_user', as: :edit_user
-      match '/users/:id', to: 'users/registrations#update_user', as: :update_user, via: [:patch, :put]
-
-      # Show page for a user.
-      get '/users/:id', to: 'users/registrations#show', as: :user
-
-      # Edit a user password.
-      get '/users/:id/change_password', to: 'users/registrations#change_password', as: :change_password
-      match 'save_password/:id', to: 'users/registrations#save_password', as: :save_password,
-            via: [:patch, :put]
-
     end
 
     unauthenticated do
@@ -59,6 +36,42 @@ Rails.application.routes.draw do
     end
 
     authenticate :user do
+      # Permite modificar la contraseña propia.
+      get '/users/change_password', to: 'users/registrations#change_password', as: :change_password
+      match '/save_password', to: 'users/registrations#save_password', as: :save_password, via: [:patch, :put]
+
+      # Lista todos los usuarios.
+      get '/users', to: 'users/registrations#index', as: :user_registrations
+
+      # Permite crear usuarios.
+      get '/users/new', to: 'users/registrations#new', as: :new_user
+      post '/users', to: 'users/registrations#create', as: :create_user
+
+      # Permite crear un usuario dentro del sistema.
+      get '/users/new_user', to: 'users/registrations#new_user', as: :new_user_inside
+      post '/users/create_user', to: 'users/registrations#create_user', as: :create_user_inside
+
+      # Permite editar tu perfil.
+      get '/users/edit', to: 'users/registrations#edit', as: :edit_profile
+      match '/users', to: 'users/registrations#update', as: :update_profile, via: [:patch, :put]
+
+      # Permite editar el perfil de otros usuarios.
+      get '/users/:id/edit', to: 'users/registrations#edit_user', as: :edit_user
+      match '/users/:id', to: 'users/registrations#update_user', as: :update_user, via: [:patch, :put]
+
+      # Permite editar las contraseñas de otros usuarios.
+      get '/users/:id/change_password', to: 'users/registrations#change_user_password', as: :change_user_password
+      match '/save_password/:id', to: 'users/registrations#save_user_password', as: :save_user_password,
+            via: [:patch, :put]
+
+      # Permite visualizar a un usuario.
+      get '/users/:id', to: 'users/registrations#show', as: :user
+
+      # Nos permite obtener la imagen de un usuario.
+      match '/users/:id/get_user_image', to: 'users/registrations#get_user_image', as: :get_user_image, via: [:patch, :put]
+
+      # Permite eliminar a un usuario.
+      delete '/users/:id', to: 'users/registrations#destroy', as: :destroy_user
     end
   end
 

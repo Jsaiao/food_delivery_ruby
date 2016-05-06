@@ -8,7 +8,7 @@
 
   <!-- /.box-header -->
   <!-- form start -->
-  <%= form_for(@address, html: {class: 'form-horizontal'}) do |f| %>
+  <%= form_for(@address, html: {class: 'form-horizontal'}, validate: true) do |f| %>
       <div class="box-body">
         <div class="form-group">
           <%= f.label :street, class: 'col-sm-2 control-label' %>

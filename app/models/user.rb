@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  attr_accessor :current_password
+
   has_many :conversations, foreign_key: :sender_id
   has_many :orders
   has_many :carts
@@ -49,9 +51,13 @@ class User < ActiveRecord::Base
     role_scope == 'restaurant'
   end
 
+  def full_name
+    "#{self.first_name} #{self.last_name} #{self.mother_last_name}"
+  end
+
   private
 
   def set_default_role
-    self.role ||= Role.find_by_key('default')
+    self.role ||= Role.find_by_key('client')
   end
 end

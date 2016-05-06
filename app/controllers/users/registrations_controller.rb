@@ -1,15 +1,15 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   layout 'out_system', only: [:new, :create]
-  add_breadcrumb I18n.t('breadcrumbs.users'), :user_registrations_path
+  before_action :set_user, only: [:show, :edit_user, :update_user, :destroy, :change_user_password, :save_user_password,
+                                  :get_user_image]
+  before_action :set_current_user, only: [:edit, :update, :change_password, :save_password]
+  skip_before_filter :require_no_authentication, only: [:new, :create]
+  skip_before_filter :authenticate_scope!, only: [:edit, :update, :destroy]
+  skip_before_action :is_authorized, only: [:edit, :update, :change_password, :save_password, :get_user_image,
+                                            :show, :new, :create]
 
-  before_action :set_user, only: [:show, :edit_user, :update_user, :destroy]
-  before_action :set_current_user, only: [:edit, :update]
-  skip_before_action :is_authorized, only: [:edit, :update, :new, :create]
-
-  # before_filter :configure_sign_up_params, only: [:create]
-  # before_filter :configure_account_update_params, only: [:update]
-
-  # GET /usersx
+  # GET /users
+  # GET /users.json
   def index
     @users = policy_scope(User).paginate(page: params[:page], per_page: 15)
   end
@@ -23,29 +23,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  # GET /resource/sign_up
-  # def new
-  # super
-  # end
-
-  # GET /users/new_user
-  def new_user
+  # GET /users/new
+  def new
     @user = User.new
   end
 
-  # GET /resource/edit
-  def edit
-    super
+  def new_user
+    @user = User.new
   end
-
-  # GET /roles/1/edit
-  def edit_user
-  end
-
-  # POST /resource
-  # def create
-  # super
-  # end
 
   # POST /users
   # POST /users.json
@@ -62,29 +47,67 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  # PUT /resource
+  # GET /users/1/edit
+  def edit
+  end
+
+  # POST /users
+  # POST /users.json
+  #def create
+  #  super
+  #end
+
+  # PATCH/PUT /users/1
   def update
     prev_unconfirmed_email = @user.unconfirmed_email if @user.respond_to?(:unconfirmed_email)
-    if @user.update_attributes(account_update_params)
+    if @user.update_attributes(profile_update_params)
       if is_flashing_format?
         flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ? :update_needs_confirmation : :updated
         set_flash_message :notice, flash_key
       end
       set_flash_message :notice, :updated
       sign_in @user, bypass: true
-      redirect_to user_registration_path(@user)
+      redirect_to user_path(@user)
     else
       render 'edit'
     end
   end
 
-  # PATCH/PUT /roles/1
-  # PATCH/PUT /roles/1.json
+  # DELETE /resource
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to user_registrations_url }
+      format.json { head :no_content }
+    end
+  end
+
+  # Métodos para modificar la propia contraseña.
+  def change_password
+  end
+
+  def save_password
+    respond_to do |format|
+      if @user.update_with_password(profile_update_params) && @user.update(profile_update_params)
+        # Sign in the user by passing validation in case their password changed
+        sign_in @user, bypass: true
+        format.html { redirect_to authenticated_root_path, notice: 'User updated correctly' }
+        format.json { head :no_content }
+      else
+        format.html { render :change_password }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # Métodos utilizados para editar usuarios como administrador.
+  def edit_user
+  end
+
   def update_user
     prev_unconfirmed_email = @user.unconfirmed_email if @user.respond_to?(:unconfirmed_email)
 
     if @user.update(account_update_params)
-
       if is_flashing_format?
         flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ? :update_needs_confirmation : :updated
         set_flash_message :notice, flash_key
@@ -96,10 +119,35 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def change_user_password
+  end
+
+  def save_user_password
+    flag = true if @user.eql? current_user
+    user = @user
+
+    respond_to do |format|
+      if @user.update(account_update_params)
+        # Sign in the user by passing validation in case their password changed
+        sign_in user, bypass: true if flag
+        format.html { redirect_to user_registrations_path,
+                                  notice: 'User updated correctly' }
+        format.json { head :no_content }
+      else
+        format.html { render :change_user_password }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def get_user_image
+    respond_to do |format|
+      if @user.update_attributes(update_avatar)
+        format.json { render json: @user.avatar_image.to_json }
+      end
+    end
+  end
+
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -131,7 +179,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  private
+
+  protected
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
@@ -144,11 +193,41 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def sign_up_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :username, :first_name, :last_name,
-                                 :maiden_name, :role_id)
+    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :mother_last_name,
+                                 :role_id, :avatar, :avatar_original_w, :avatar_original_h, :avatar_box_w,
+                                 :avatar_aspect, :avatar_crop_x, :avatar_crop_y, :avatar_crop_w, :avatar_crop_h,
+                                 addresses_attributes: [:id, :street, :city, :zipcode, :phone_number,:state, :_destroy])
   end
 
   def account_update_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :role_id)
+    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :mother_last_name,
+                                 :role_id, :avatar, :avatar_original_w, :avatar_original_h, :avatar_box_w,
+                                 :avatar_aspect, :avatar_crop_x, :avatar_crop_y, :avatar_crop_w, :avatar_crop_h,
+                                 addresses_attributes: [:id, :street, :city, :zipcode, :phone_number,:state, :_destroy])
+  end
+
+  def profile_update_params
+    params.require(:user).permit(:email, :current_password, :password, :password_confirmation, :first_name, :last_name,
+                                 :mother_last_name, :avatar, :avatar_original_w, :avatar_original_h, :avatar_box_w,
+                                 :avatar_aspect, :avatar_crop_x, :avatar_crop_y, :avatar_crop_w, :avatar_crop_h,
+                                 addresses_attributes: [:id, :street, :city, :zipcode, :phone_number,:state, :_destroy])
+  end
+
+  def update_avatar
+    params.require(:user).permit(:avatar)
+  end
+
+  def needs_password?
+    @user.email != params[:user][:email] || params[:user][:password].present?
+  end
+
+  # The path used after sign up.
+  def after_sign_up_path_for(resource)
+    super(resource)
+  end
+
+  # The path used after sign up for inactive accounts.
+  def after_inactive_sign_up_path_for(resource)
+    super(resource)
   end
 end
