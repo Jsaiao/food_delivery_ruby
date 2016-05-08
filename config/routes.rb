@@ -96,5 +96,6 @@ Rails.application.routes.draw do
   post '/delete_product_from_cart/:id', to: 'products#delete_product_from_cart', as: :delete_product_from_cart
   get '/user_cart', to: 'carts#user_cart', as: :user_cart
   get '/place_order', to: 'carts#place_order', as: :place_order
+  get '/view_product/:id', to: 'products#view_product', as: :view_product
   post '/make_order/:address_id', to: 'carts#make_order', as: :make_order
 end

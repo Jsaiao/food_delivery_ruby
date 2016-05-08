@@ -4,7 +4,13 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all.paginate(page: params[:page], per_page: 15)
+    if current_user.god?
+      @orders = Order.all.paginate(page: params[:page], per_page: 15)
+    else
+      @res = current_user.restaurant
+      @order_product = OrderProduct.where(product_id: @res.products.ids).pluck(:order_id).uniq
+      @orders = Order.where(id: @order_product).paginate(page: params[:page], per_page: 15)
+    end
   end
 
   # GET /orders/1

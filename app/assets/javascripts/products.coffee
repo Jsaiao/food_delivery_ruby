@@ -8,4 +8,17 @@ $(window).bind 'page:change', ->
       type: 'POST'
       url: '/add_product/' + $(this).data('id')
     return
+
+  $('.remove-product').on 'click', ->
+    $.ajax
+      type: 'POST'
+      url: '/one_less_product/' + $(this).data('id')
+    return
+
+  $('.view-product ').on 'click', ->
+    $.ajax
+      type: 'GET'
+      dataType: 'script'
+      url: '/view_product/' + $(this).data('id')
+    return
   return

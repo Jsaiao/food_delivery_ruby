@@ -32,10 +32,25 @@ $(window).bind 'page:change', ->
     $(obj).next().empty().append "" + num + ""
     return
 
+  removeProduct = (obj) ->
+    num = Number(($(obj).prev().text()).replace('$', '')) - 1
+    $(obj).prev().empty().append "" + num + ""
+    return
+
   $('.inline-flex > button').on 'click', ->
     if $(this).hasClass('add-product')
       addProduct(this)
       setSubTotal(this)
+    if $(this).hasClass('remove-product')
+      removeProduct(this)
+      setSubTotal(this)
+    return
+
+  $('.delete-product').on 'click', ->
+    $.ajax
+      type: 'POST'
+      dataType: 'script'
+      url: '/delete_product_from_cart/' + $(this).data('id')
     return
 
   setTotal()
