@@ -31,7 +31,7 @@
         <tbody class="cart">
         <% number=1 %>
         <% @cart_products.each do |cart| %>
-            <tr>
+            <tr id="cart-product-<%= cart.id %>">
               <td><%= number %></td>
               <td><%= cart.product.name %></td>
               <td class="product-price"><%= number_to_currency(cart.product.price) %></td>
@@ -43,10 +43,14 @@
                   <div class="quantity">
                     <%= cart.quantity %>
                   </div>
-                  <button class="btn btn-flat btn-xs">
+                  <button class="btn btn-flat btn-xs remove-product" data-id="<%= cart.product.id %>">
                     <i class="fa fa-minus"></i>
                   </button>
                 </div>
+              </td>
+              <td>
+                <%= link_to '<i class="fa fa-times"></i>'.html_safe, 'javascript:;',
+                            class: 'btn btn-flat btn-xs bg-red delete-product', data: {id: cart.id} %>
               </td>
               <td class="center subtotal"><%= number_to_currency(cart.product.price * cart.quantity) %></td>
             </tr>

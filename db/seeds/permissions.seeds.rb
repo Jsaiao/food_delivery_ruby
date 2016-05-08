@@ -65,5 +65,6 @@ Permission.create!([
   {name: "Ver Direcciones", description: "Ver direcciones", action: "index", controller: "Addresses"},
   {name: "Nueva Direccion", description: "Nueva direccion", action: "new", controller: "Addresses"},
   {name: "Ver Direccion", description: "Ver direccion", action: "show", controller: "Addresses"},
-  {name: "Actualizar Direccion", description: "Actualizar direccion", action: "update", controller: "Addresses"}
+  {name: "Actualizar Direccion", description: "Actualizar direccion", action: "update", controller: "Addresses"},
+  {name: "Permite Abrir Modal De Producto", description: "product-modal", action: "view_product", controller: "Products"}
 ])

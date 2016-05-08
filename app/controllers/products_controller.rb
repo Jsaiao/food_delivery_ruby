@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy, :add_product_to_cart,
-                                     :set_quantity, :one_less_product, :delete_product_from_cart]
+                                     :set_quantity, :one_less_product, :view_product]
   skip_before_action :authenticate_user!, :is_authorized, only: [:index_mobile]
 
 
@@ -107,10 +107,16 @@ class ProductsController < ApplicationController
   end
 
   def delete_product_from_cart
-    @cart = current_user.carts.where(product_id: @product.id).first.destroy
+    @cart = Cart.find(params[:id])
 
     respond_to do |format|
-      format.js {render template: 'carts/update_cart.js.erb'}
+      format.js
+    end
+  end
+
+  def view_product
+    respond_to do |format|
+      format.js
     end
   end
 
