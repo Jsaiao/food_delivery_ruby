@@ -30,14 +30,10 @@
             </li>
             <!-- Menu Body -->
             <li class="user-body">
-              <div class="col-xs-4 text-center">
-                <a href="javascript:;">Followers</a>
-              </div>
-              <div class="col-xs-4 text-center">
-                <a href="javascript:;">Sales</a>
-              </div>
-              <div class="col-xs-4 text-center">
-                <a href="javascript:;">Friends</a>
+              <div class="col-xs-12 text-center">
+                <div>
+                  <%= link_to 'Change password', change_password_path %>
+                </div>
               </div>
             </li>
             <!-- Menu Footer-->
@@ -45,19 +41,17 @@
               <div class="pull-left">
                 <%= link_to 'Profile', edit_profile_path, class: 'btn btn-default btn-flat' %>
               </div>
-              <div>
-                <%= link_to 'Change password', change_password_path, class: 'btn btn-default btn-flat' %>
-              </div>
               <div class="pull-right">
                 <%= link_to 'Sing Out', destroy_user_session_path, method: :delete, class: 'btn btn-default btn-flat' %>
               </div>
             </li>
           </ul>
         </li>
-        <!-- Control Sidebar Toggle Button -->
+        <!--
         <li>
           <a href="javascript:;" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
         </li>
+        Control Sidebar Toggle Button -->
       </ul>
     </div>
   </nav>

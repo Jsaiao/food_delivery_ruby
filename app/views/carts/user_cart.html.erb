@@ -46,11 +46,9 @@
                   <button class="btn btn-flat btn-xs remove-product" data-id="<%= cart.product.id %>">
                     <i class="fa fa-minus"></i>
                   </button>
+                  <%= link_to '<i class="fa fa-times"></i>'.html_safe, 'javascript:;',
+                              class: 'btn btn-flat btn-xs bg-red delete-product', data: {id: cart.id} %>
                 </div>
-              </td>
-              <td>
-                <%= link_to '<i class="fa fa-times"></i>'.html_safe, 'javascript:;',
-                            class: 'btn btn-flat btn-xs bg-red delete-product', data: {id: cart.id} %>
               </td>
               <td class="center subtotal"><%= number_to_currency(cart.product.price * cart.quantity) %></td>
             </tr>
@@ -68,6 +66,5 @@
     </div><!-- /.box-body -->
   </div>
 </section>
-
 
 <%= link_to 'Place order', place_order_path %>

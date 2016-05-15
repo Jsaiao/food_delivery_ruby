@@ -1,44 +1,77 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}, validate: true) do |f| %>
-    <%#= devise_error_messages! %>
-
-    <div class="field">
-      <%= f.label :email %><br/>
-      <%= f.email_field :email, autofocus: true %>
+<section class="content">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="box box-primary">
+        <div class="box-body box-profile">
+          <%= image_tag 'user.png', class: 'profile-user-img img-responsive img-circle' %>
+          <h3 class="profile-username text-center"><%= current_user.first_name %> <%= current_user.last_name %></h3>
+        </div>
+      </div>
     </div>
+    <div class="col-md-9">
+      <div class="nav-tabs-custom">
+        <div class="tab-content">
+          <div class="tab-pane active" id="settings">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put, class: 'form-horizontal'}, validate: true) do |f| %>
+                <div class="col-sm-offset-2">
+                  <h2>Profile</h2>
+                </div>
+                <div class="form-group">
+                  <%= f.label :email, class: 'col-sm-2 control-label' %>
+                  <div class="col-sm-10">
+                    <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+                  </div>
+                </div>
 
-    <div class="field">
-      <%= f.label :first_name %><br/>
-      <%= f.text_field :first_name%>
+                <div class="form-group">
+                  <%= f.label :first_name, class: 'col-sm-2 control-label' %>
+                  <div class="col-sm-10">
+                    <%= f.email_field :first_name, class: 'form-control' %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :last_name, class: 'col-sm-2 control-label' %>
+                  <div class="col-sm-10">
+                    <%= f.email_field :last_name, class: 'form-control' %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :mother_last_name, class: 'col-sm-2 control-label' %>
+                  <div class="col-sm-10">
+                    <%= f.email_field :mother_last_name, class: 'form-control' %>
+                  </div>
+                </div>
+
+                <div class="col-sm-offset-2">
+                  <h2>Addresses</h2>
+                </div>
+
+                <div>
+                  <%= f.fields_for :addresses do |address| %>
+                      <%= render '/shared/address_fields', f: address %>
+                  <% end %>
+                  <div class="col-sm-offset-2">
+                    <%= link_to_add_association "<i class='fa fa-plus'></i> Add Address".html_safe, f,
+                                                :addresses, class: 'form-control',
+                                                partial: '/shared/address_fields' %>
+                  </div>
+                </div>
+
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                <% end %>
+
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <%= f.submit 'Update', class: 'btn btn-success' %>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="field">
-      <%= f.label :last_name %><br/>
-      <%= f.text_field :last_name %>
-    </div>
-
-    <div class="field">
-      <%= f.label :mother_last_name %><br/>
-      <%= f.text_field :mother_last_name %>
-    </div>
-
-    <div>
-      <%= f.fields_for :addresses do |address| %>
-          <%= render '/shared/address_fields', f: address %>
-      <% end %>
-      <%= link_to_add_association "<i class='fa fa-plus'></i> Add Address".html_safe, f,
-                                  :addresses, class: 'form-control',
-                                  partial: '/shared/address_fields' %>
-    </div>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
-
-    <div class="actions">
-      <%= f.submit "Update" %>
-    </div>
-<% end %>
-
-<%= link_to "Back", :back %>
+  </div>
+</section>
