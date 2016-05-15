@@ -1,0 +1,46 @@
+<% case %>
+<% when logbook.action == 'create' %>
+    <i class="fa fa-<%= logbook.controller %> bg-green"></i>
+<% when logbook.action == 'media_record' %>
+    <i class="fa fa-<%= logbook.controller %> bg-green"></i>
+<% when logbook.action == 'update' %>
+    <i class="fa fa-<%= logbook.controller %> bg-blue"></i>
+<% when logbook.action == 'update_user' %>
+    <i class="fa fa-<%= logbook.controller %> bg-blue"></i>
+<% when logbook.action == 'toggle' %>
+    <i class="fa fa-<%= logbook.controller %> bg-blue"></i>
+<% when logbook.action == 'restore' %>
+    <i class="fa fa-<%= logbook.controller %> bg-blue"></i>
+<% when logbook.action == 'set_index' %>
+    <i class="fa fa-<%= logbook.controller %> bg-purple"></i>
+<% when logbook.action == 'post_variables' %>
+    <i class="fa fa-<%= logbook.controller %> bg-grey-gallery"></i>
+<% when logbook.action == 'save_user_password' %>
+    <i class="fa fa-<%= logbook.controller %> bg-blue"></i>
+<% when logbook.action == 'save_password' %>
+    <i class="fa fa-<%= logbook.controller %> bg-yellow"></i>
+<% when logbook.action == 'autocreate' %>
+    <i class="fa fa-<%= logbook.controller %> bg-green"></i>
+<% when logbook.action == 'autoupdate' %>
+    <i class="fa fa-<%= logbook.controller %> bg-blue"></i>
+<% when logbook.action == 'set_as_draft' %>
+    <i class="fa fa-<%= logbook.controller %> bg-blue"></i>
+<% when logbook.action == 'get_ssi_snippet' %>
+    <i class="fa fa-<%= logbook.controller %> bg-blue"></i>
+<% when logbook.action == 'delete_ssi_snippet' %>
+    <i class="fa fa-<%= logbook.controller %> bg-red"></i>
+<% when logbook.action == 'set_revision_as_current' %>
+    <i class="fa fa-<%= logbook.controller %> bg-yellow"></i>
+<% when logbook.action == 'assign_permissions' %>
+    <i class="fa fa-<%= logbook.controller %> bg-yellow"></i>
+<% when logbook.action == 'synchronize' %>
+    <i class="fa fa-<%= logbook.controller %> bg-yellow"></i>
+<% when logbook.action == 'block_user' %>
+    <i class="fa fa-<%= logbook.controller %> bg-yellow"></i>
+<% when logbook.action == 'destroy' %>
+    <i class="fa fa-<%= logbook.controller %> bg-red"></i>
+<% when logbook.action == 'asset_file_record' %>
+    <i class="fa fa-<%= logbook.controller %> bg-green"></i>
+<% when logbook.action == 'delete_per_lot' %>
+    <i class="fa fa-<%= logbook.controller %> bg-red"></i>
+<% end %>

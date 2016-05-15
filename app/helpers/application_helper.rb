@@ -16,4 +16,10 @@ module ApplicationHelper
     policy_name = (scope.to_s + 'Policy').classify.constantize
     policy_name::ScopeActions.new(user, scope).collection_scope
   end
+
+  def show_image_record(logbook)
+    if logbook.blank?
+      ActionController::Base.helpers.asset_path('user.png')
+    end
+  end
 end

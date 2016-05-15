@@ -1,0 +1,65 @@
+<table class="table table-striped table-bordered table-hover dataTable no-footer"
+       id="listadetalles" role="grid" aria-describedby="listadetalles_info">
+  <thead>
+  <tr role="row">
+    <th><%= t 'table.user' %></th>
+    <% if current_user.role_scope == 'total' %>
+        <th><%= t 'table.role' %></th>
+    <% end %>
+    <th><%= t 'table.name' %></th>
+    <% if logbook.logbook_username?(logbook) %>
+        <th><%= t 'table.server_user' %></th>
+    <% end %>
+    <th><%= t 'table.created_date' %></th>
+    <% if logbook.options['created_at'] != logbook.options['updated_at'] %>
+        <th><%= t 'table.updated_date' %></th>
+    <% end %>
+    <% if logbook.logbook_old_name?(logbook) %>
+        <th><%= t 'table.old_name' %></th>
+    <% end %>
+    <% if logbook.options['status'] %>
+        <th><%= t 'table.status' %></th>
+    <% end %>
+    <% if logbook.options['publish_date'] %>
+        <th><%= t 'table.publish_date' %></th>
+    <% end %>
+    <% if logbook.options['fileable_name'] %>
+        <th><%= t "table.#{logbook.options['fileable_type'].downcase}" %></th>
+    <% end %>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="gradeX odd all-left" role="row">
+    <td>
+      <%= logbook.options['requester_username'] %>
+    </td>
+    <% if current_user.role_scope == 'total' %>
+        <td> <%= logbook.options['requester_role_name'] %> </td>
+    <% end %>
+    <td>
+      <%= logbook.options['requester_full_name'] %>
+    </td>
+    <% if logbook.logbook_username?(logbook) %>
+        <td> <%= logbook.options['username'] %> </td>
+    <% end %>
+    <td>
+      <%= l(logbook.options['created_at'].try(:to_time), format: :views) %>
+    </td>
+    <% if logbook.options['created_at'] != logbook.options['updated_at'] %>
+        <td> <%= l(logbook.options['updated_at'].to_time, format: :views) %> </td>
+    <% end %>
+    <% if logbook.logbook_old_name?(logbook) %>
+        <td> <%= logbook.options['old_name'] %> </td>
+    <% end %>
+    <% if logbook.options['status'] %>
+        <td> <%= logbook.options['status'] %> </td>
+    <% end %>
+    <% if logbook.options['publish_date'] %>
+        <td> <%= l(logbook.options['publish_date'].to_time, format: :views) %> </td>
+    <% end %>
+    <% if logbook.options['fileable_name'] %>
+        <td><%= logbook.options['fileable_name'] %></td>
+    <% end %>
+  </tr>
+  </tbody>
+</table>

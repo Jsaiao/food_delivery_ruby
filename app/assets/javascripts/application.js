@@ -18,6 +18,7 @@
 //= require private_pub
 //= require bootstrap
 //= require cocoon
+//= require pagination.js
 //= require icheck
 //= require chat
 //= require bootstrap-slider/bootstrap-slider

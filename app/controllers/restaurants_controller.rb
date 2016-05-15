@@ -37,6 +37,7 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       if @restaurant.save
+        track_actions(@restaurant)
         format.html { redirect_to @restaurant, notice: 'Restaurant was successfully created.' }
         format.json { render :show, status: :created, location: @restaurant }
       else
@@ -49,8 +50,10 @@ class RestaurantsController < ApplicationController
   # PATCH/PUT /restaurants/1
   # PATCH/PUT /restaurants/1.json
   def update
+    extra_parameters = {old_name: @restaurant.name}
     respond_to do |format|
       if @restaurant.update(restaurant_params)
+        track_actions(@restaurant, extra_parameters)
         format.html { redirect_to @restaurant, notice: 'Restaurant was successfully updated.' }
         format.json { render :show, status: :ok, location: @restaurant }
       else
@@ -64,6 +67,7 @@ class RestaurantsController < ApplicationController
   # DELETE /restaurants/1.json
   def destroy
     @restaurant.destroy
+    track_actions(@restaurant)
     respond_to do |format|
       format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
       format.json { head :no_content }
