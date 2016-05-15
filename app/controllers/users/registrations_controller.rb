@@ -38,6 +38,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(sign_up_params)
     respond_to do |format|
       if @user.save
+        track_actions(@user)
         format.html { redirect_to user_registrations_path, notice: 'User created correctly' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -61,6 +62,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
     prev_unconfirmed_email = @user.unconfirmed_email if @user.respond_to?(:unconfirmed_email)
     if @user.update_attributes(profile_update_params)
+      track_actions(@user)
       if is_flashing_format?
         flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ? :update_needs_confirmation : :updated
         set_flash_message :notice, flash_key
@@ -76,6 +78,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # DELETE /resource
   def destroy
     @user.destroy
+    track_actions(@user)
     respond_to do |format|
       format.html { redirect_to user_registrations_url }
       format.json { head :no_content }
@@ -91,6 +94,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if @user.update_with_password(profile_update_params) && @user.update(profile_update_params)
         # Sign in the user by passing validation in case their password changed
         sign_in @user, bypass: true
+        track_actions(@user)
         format.html { redirect_to authenticated_root_path, notice: 'User updated correctly' }
         format.json { head :no_content }
       else
@@ -108,6 +112,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     prev_unconfirmed_email = @user.unconfirmed_email if @user.respond_to?(:unconfirmed_email)
 
     if @user.update(account_update_params)
+      track_actions(@user)
       if is_flashing_format?
         flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ? :update_needs_confirmation : :updated
         set_flash_message :notice, flash_key
@@ -130,6 +135,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if @user.update(account_update_params)
         # Sign in the user by passing validation in case their password changed
         sign_in user, bypass: true if flag
+        track_actions(@user)
         format.html { redirect_to user_registrations_path,
                                   notice: 'User updated correctly' }
         format.json { head :no_content }

@@ -1,0 +1,583 @@
+en:
+  empty_logbook:
+    home: There are no records in the logbook
+    sites: There are no records on this site
+    registrations: There are no records of this user
+    pages: There are no records of this page
+  table:
+    user: User
+    role: Role
+    name: Name
+    server_user: Affected user
+    created_date: Creation date
+    updated_date: Update date
+    old_name: Previous name
+    status: Status
+    publish_date: Publish date
+    details: Details
+    associate_resources: Associate resources
+    user_ip: IP address
+    permalink: Permalink
+    site: Site
+    record_date: Record date
+    theme: Theme
+    template: Template
+    snippet: Snippet
+    deleted_resources: Deleted Resources
+  my_self:
+    create:
+      pages:
+        same_html: You published the page <b>%{resource}</b> on <b>%{site}</b>.
+        draft_html: You changed the page <b>%{resource}</b> from <b>draft</b> to <b>pending review</b> on <b>%{site}</b>.
+        pending_review_html: You changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b> on <b>%{site}</b>.
+      themes_html: You added the theme <b>%{resource}</b>.
+      templates_html: You added the template <b>%{resource}</b>.
+      snippets_html: You added the snippet <b>%{resource}</b>.
+      servers_html: You created the server <b>%{resource}</b>.
+      directories_html: You created the directory <b>%{resource}</b> in <b>%{directory_site}</b>.
+      sites_html: You created the site <b>%{resource}</b>.
+      institutions_html: You created the institution <b>%{resource}</b>.
+      topics_html: You created the topic <b>%{resource}</b>.
+      categories_html: You created the category <b>%{resource}</b>.
+      users-registrations_html: You created the user <b>%{user}</b>.
+      permissions_html: You created the permission <b>%{resource}</b>.
+      roles_html: You created the role <b>%{resource}</b>.
+    media_record:
+      media_files_html: You added media files in <b>%{site}</b>.
+    autocreate:
+      pages:
+        same_html: You added the page <b>%{resource}</b> on <b>%{site}</b>.
+        draft_html: You changed the page <b>%{resource}</b> from <b>draft</b> to <b>pending review</b> on <b>%{site}</b>.
+        pending_review_html: You changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b> on <b>%{site}</b>.
+    update:
+      pages:
+        same_html: You published the page <b>%{resource}</b> on <b>%{site}</b>.
+        draft_html: You changed the page <b>%{resource}</b> from <b>draft</b> to <b>pending review</b> on <b>%{site}</b>.
+        pending_review_html: You changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b> on <b>%{site}</b>.
+      themes_html: You updated the theme <b>%{resource}</b>.
+      templates_html: You updated the template <b>%{resource}</b>.
+      snippets_html: You updated the snippet <b>%{resource}</b>.
+      servers_html: You updated the server <b>%{resource}</b>.
+      directories_html: You updated the directory <b>%{resource}</b> en <b>%{directory_site}</b>.
+      sites_html: You updated the site <b>%{resource}</b>.
+      institutions_html: You updated the institution <b>%{resource}</b>.
+      topics_html: You updated the topic <b>%{resource}</b>.
+      categories_html: You updated the category <b>%{resource}</b>.
+      users-registrations_html: You updated your profile.
+      permissions_html: You updated the permission <b>%{resource}</b>.
+      roles_html: You updated the role <b>%{resource}</b>.
+    autoupdate:
+      pages:
+        same_html: You updated the page <b>%{resource}</b> from <b>%{site}</b>.
+        draft_html: You changed the page <b>%{resource}</b> from <b>draft</b> to <b>pending review</b> on <b>%{site}</b>.
+        pending_review_html: You changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b> on <b>%{site}</b>.
+        publish_html: You updated the page <b>%{resource}</b> from <b>%{site}</b>.
+    set_as_draft:
+      pages:
+        same_html: You converted to draft the page <b>%{resource}</b> in <b>%{site}</b>.
+    toggle:
+      servers:
+        true_html: You activated the server <b>%{resource}</b>.
+        false_html: You deactivated the server <b>%{resource}</b>.
+      templates:
+        true_html: You activated the template <b>%{resource}</b>.
+        false_html: You deactivated the template <b>%{resource}</b>.
+    set_index:
+      sites_html: You updated the site's main page in <b>%{resource}</b>.
+    post_variables:
+      sites_html: You updated the site's variables in <b>%{resource}</b>.
+    update_user:
+      users-registrations_html: You updated the user <b>%{user}</b>.
+    save_user_password:
+      users-registrations_html: You updated the password of the user <b>%{user}</b>.
+    save_password:
+      users-registrations_html: You updated your password.
+    set_revision_as_current:
+      pages:
+        same_html: You updated the revision for the page <b>%{resource}</b> on <b>%{site}</b>.
+    assign_permissions:
+      roles_html: You updated the permissions for the role <b>%{resource}</b>.
+    restore:
+      sites_html: You restored the site <b>%{resource}</b>.
+      servers_html: You restored the server <b>%{resource}</b>.
+      users-registrations_html: You restored the user <b>%{user}</b>.
+    synchronize:
+      sites_html: You synchronized the site <b>%{resource}</b>.
+    block_user:
+      users-registrations:
+        true_html: You blocked the user <b>%{user}</b>.
+        false_html: You unblocked the user <b>%{user}</b>.
+    destroy:
+      pages:
+        same_html: You deleted the page <b>%{resource}</b> on <b>%{site}</b>.
+      themes_html: You deleted the theme <b>%{resource}</b>.
+      templates_html: You deleted the template <b>%{resource}</b>.
+      snippets_html: You deleted the snippet <b>%{resource}</b>.
+      media_files_html: You deleted a media file in <b>%{site}</b>.
+      servers_html: You deleted the server <b>%{resource}</b>.
+      directories_html: You deleted the directory <b>%{resource}</b> in <b>%{directory_site}</b>.
+      sites_html: You deleted the site <b>%{resource}</b>.
+      institutions_html: You deleted the institution <b>%{resource}</b>.
+      topics_html: You deleted the topic <b>%{resource}</b>.
+      categories_html: You deleted the category <b>%{resource}</b>.
+      users-registrations_html: You deleted the user <b>%{user}</b>.
+      permissions_html: You deleted the permission <b>%{resource}</b>.
+      roles_html: You deleted the role <b>%{resource}</b>.
+    get_ssi_snippet:
+      pages:
+        same_html: You selected a snippet for the page <b>%{resource}</b> on <b>%{site}</b>.
+    delete_ssi_snippet:
+      pages:
+        same_html: You deleted a snippet reference for the page <b>%{resource}</b> on <b>%{site}</b>.
+    asset_file_record:
+      application:
+        theme_html: You added an Asset to the theme <b>%{fileable_name}</b>.
+        template_html: You added an Asset to the template <b>%{fileable_name}</b>.
+        snippet_html: You added an Asset to the snippet <b>%{fileable_name}</b>.
+    delete_per_lot:
+      users-registrations_html: You deleted multiple users.
+      pages:
+        same_html: You deleted multiple pages.
+        draft_html: You deleted multiple pages.
+        pending_review_html: You deleted multiple pages.
+      themes_html: You deleted multiple pages.
+      media_files_html: You deleted multiple files.
+      servers_html: You deleted multiple servers.
+      sites_html: You deleted multiple sites.
+      snippets_html: You deleted multiple snippets.
+      templates_html: You deleted multiple templates.
+      institutions_html: You deleted multiple institutions.
+      topics_html: You deleted multiple topics.
+      categories_html: You deleted multiple categories.
+  home:
+    create:
+      pages:
+        same_html: <b>%{requester}</b> published the page <b>%{resource}</b> on <b>%{site}</b>.
+        draft_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>draft</b> to <b>pending review</b> on <b>%{site}</b>.
+        pending_review_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b> on <b>%{site}</b>.
+      themes_html: <b>%{requester}</b> added the theme <b>%{resource}</b>.
+      templates_html: <b>%{requester}</b> added the template <b>%{resource}</b>.
+      snippets_html: <b>%{requester}</b> added the snippet <b>%{resource}</b>.
+      servers_html: <b>%{requester}</b> created the server <b>%{resource}</b>.
+      directories_html: <b>%{requester}</b> created the directory <b>%{resource}</b> in <b>%{directory_site}</b>.
+      sites_html: <b>%{requester}</b> created the site <b>%{resource}</b>.
+      institutions_html: <b>%{requester}</b> created the institution <b>%{resource}</b>.
+      topics_html: <b>%{requester}</b> created the topic <b>%{resource}</b>.
+      categories_html: <b>%{requester}</b> created the category <b>%{resource}</b>.
+      users-registrations_html: <b>%{requester}</b> created the user <b>%{user}</b>.
+      permissions_html: <b>%{requester}</b> created the permission <b>%{resource}</b>.
+      roles_html: <b>%{requester}</b> created the role <b>%{resource}</b>.
+    media_record:
+      media_files_html: <b>%{requester}</b> added media files in <b>%{site}</b>.
+    autocreate:
+      pages:
+        same_html: <b>%{requester}</b> added the page <b>%{resource}</b> on <b>%{site}</b>.
+        draft_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>draft</b> to <b>pending review</b> on <b>%{site}</b>.
+        pending_review_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b> on <b>%{site}</b>.
+    update:
+      pages:
+        same_html: <b>%{requester}</b> published the page <b>%{resource}</b> in <b>%{site}</b>.
+        draft_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>draft</b> to <b>pending review</b>.
+        pending_review_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b>.
+      themes_html: <b>%{requester}</b> updated the theme <b>%{resource}</b>.
+      templates_html: <b>%{requester}</b> updated the template <b>%{resource}</b>.
+      snippets_html: <b>%{requester}</b> updated the snippet <b>%{resource}</b>.
+      servers_html: <b>%{requester}</b> updated the server <b>%{resource}</b>.
+      directories_html: <b>%{requester}</b> updated the directory <b>%{resource}</b> in <b>%{directory_site}</b>.
+      sites_html: <b>%{requester}</b> updated the site <b>%{resource}</b>.
+      institutions_html: <b>%{requester}</b> updated the institution <b>%{resource}</b>.
+      topics_html: <b>%{requester}</b> updated the topic <b>%{resource}</b>.
+      categories_html: <b>%{requester}</b> updated the category <b>%{resource}</b>.
+      users-registrations_html: <b>%{requester}</b> updated the profile section.
+      permissions_html: <b>%{requester}</b> updated the permission <b>%{resource}</b>.
+      roles_html: <b>%{requester}</b> updated the role <b>%{resource}</b>.
+    autoupdate:
+      pages:
+        same_html: <b>%{requester}</b> updated the page <b>%{resource}</b> in <b>%{site}</b>.
+        draft_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>draft</b> to <b>pending review</b> in <b>%{site}</b>.
+        pending_review_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b> in <b>%{site}</b>.
+        publish_html: <b>%{requester}</b> updated the page <b>%{resource}</b> in <b>%{site}</b>.
+    set_as_draft:
+      pages:
+        same_html: <b>%{requester}</b> converted to draft the page <b>%{resource}</b> in <b>%{site}</b>.
+    toggle:
+      servers:
+        true_html: <b>%{requester}</b> activated the server <b>%{resource}</b>.
+        false_html: <b>%{requester}</b> deactivated the server <b>%{resource}</b>.
+      templates:
+        true_html: <b>%{requester}</b> activated the template <b>%{resource}</b>.
+        false_html: <b>%{requester}</b> deactivated the template <b>%{resource}</b>.
+    set_index:
+      sites_html: <b>%{requester}</b> updated the site's main page in <b>%{resource}</b>.
+    post_variables:
+      sites_html: <b>%{requester}</b> updated the site's variables in <b>%{resource}</b>.
+    update_user:
+      users-registrations_html: <b>%{requester}</b> updated the user <b>%{user}</b>.
+    save_user_password:
+      users-registrations_html: <b>%{requester}</b> updated the password of the user <b>%{user}</b>.
+    save_password:
+      users-registrations_html: <b>%{requester}</b> updated the password account.
+    set_revision_as_current:
+      pages:
+        same_html: <b>%{requester}</b> updated the revision for the page <b>%{resource}</b> on <b>%{site}</b>.
+    assign_permissions:
+      roles_html: <b>%{requester}</b> updated the permissions for the role <b>%{resource}</b>.
+    restore:
+      sites_html: <b>%{requester}</b> restored the site <b>%{resource}</b>.
+      servers_html: <b>%{requester}</b> restored the server <b>%{resource}</b>.
+      registrations_html: <b>%{requester}</b> restored the user <b>%{user}</b>.
+    synchronize:
+      sites_html: <b>%{requester}</b> synchronized the site <b>%{resource}</b>.
+    block_user:
+      users-registrations:
+        true_html: <b>%{requester}</b> blocked the user <b>%{user}</b>.
+        false_html: <b>%{requester}</b> unblocked the user <b>%{user}</b>.
+    destroy:
+      pages:
+        same_html: <b>%{requester}</b> deleted the page <b>%{resource}</b> in <b>%{site}</b>.
+      themes_html: <b>%{requester}</b> deleted the theme <b>%{resource}</b>.
+      templates_html: <b>%{requester}</b> deleted the template <b>%{resource}</b>.
+      snippets_html: <b>%{requester}</b> deleted the snippet <b>%{resource}</b>.
+      media_files_html: <b>%{requester}</b> deleted a media file in <b>%{site}</b>.
+      servers_html: <b>%{requester}</b> deleted the server <b>%{resource}</b>.
+      directories_html: <b>%{requester}</b> deleted the directory <b>%{resource}</b> in <b>%{directory_site}</b>.
+      sites_html: <b>%{requester}</b> deleted the site <b>%{resource}</b>.
+      institutions_html: <b>%{requester}</b> deleted the institution <b>%{resource}</b>.
+      topics_html: <b>%{requester}</b> deleted the topic <b>%{resource}</b>.
+      categories_html: <b>%{requester}</b> deleted the category <b>%{resource}</b>.
+      users-registrations_html: <b>%{requester}</b> deleted the user <b>%{user}</b>.
+      permissions_html: <b>%{requester}</b> deleted the permission <b>%{resource}</b>.
+      roles_html: <b>%{requester}</b> deleted the role <b>%{resource}</b>.
+    get_ssi_snippet:
+      pages:
+        same_html: <b>%{requester}</b> selected a snippet for the page <b>%{resource}</b> on <b>%{site}</b>.
+    delete_ssi_snippet:
+      pages:
+        same_html: <b>%{requester}</b> deleted a snippet reference for the page <b>%{resource}</b> on <b>%{site}</b>.
+    asset_file_record:
+      application:
+        theme_html: <b>%{requester}</b> added an Asset to the theme <b>%{fileable_name}</b>.
+        template_html: <b>%{requester}</b> added an Asset to the template <b>%{fileable_name}</b>.
+        snippet_html: <b>%{requester}</b> added an Asset to the snippet <b>%{fileable_name}</b>.
+    delete_per_lot:
+      users-registrations_html: <b>%{requester}</b> deleted multiple users.
+      pages:
+        same_html: <b>%{requester}</b> deleted multiple pages.
+        draft_html: <b>%{requester}</b> deleted multiple pages.
+        pending_review_html: <b>%{requester}</b> deleted multiple pages.
+      themes_html: <b>%{requester}</b> deleted multiple pages.
+      media_files_html: <b>%{requester}</b> deleted multiple files.
+      servers_html: <b>%{requester}</b> deleted multiple servers.
+      sites_html: <b>%{requester}</b> deleted multiple sites.
+      snippets_html: <b>%{requester}</b> deleted multiple snippets.
+      templates_html: <b>%{requester}</b> deleted multiple templates.
+      institutions_html: <b>%{requester}</b> deleted multiple institutions.
+      topics_html: <b>%{requester}</b> deleted multiple topics.
+      categories_html: <b>%{requester}</b> deleted multiple categories.
+  sites:
+    create:
+      pages:
+        same_html: <b>%{requester}</b> published the page <b>%{resource}</b>.
+        draft_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>draft</b> to <b>pending review</b>.
+        pending_review_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b>.
+      themes_html: <b>%{requester}</b> added the theme <b>%{resource}</b>.
+      templates_html: <b>%{requester}</b> added the template <b>%{resource}</b>.
+      snippets_html: <b>%{requester}</b> added the snippet <b>%{resource}</b>.
+      servers_html: <b>%{requester}</b> created the server <b>%{resource}</b>.
+      directories_html: <b>%{requester}</b> created the directory <b>%{resource}</b> in <b>%{directory_site}</b>.
+      sites_html: <b>%{requester}</b> created the site <b>%{resource}</b>.
+      institutions_html: <b>%{requester}</b> created the institution <b>%{resource}</b>.
+      topics_html: <b>%{requester}</b> created the topic <b>%{resource}</b>.
+      categories_html: <b>%{requester}</b> created the category <b>%{resource}</b>.
+      users-registrations_html: <b>%{requester}</b> created the user <b>%{user}</b>.
+      permissions_html: <b>%{requester}</b> created the permission <b>%{resource}</b>.
+      roles_html: <b>%{requester}</b> created the role <b>%{resource}</b>.
+    media_record:
+      media_files_html: <b>%{requester}</b> added media files.
+    autocreate:
+      pages:
+        same_html: <b>%{requester}</b> added the page <b>%{resource}</b>.
+        draft_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>draft</b> to <b>pending review</b>.
+        pending_review_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b>.
+    update:
+      pages:
+        same_html: <b>%{requester}</b> published the page <b>%{resource}</b>.
+        draft_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>draft</b> to <b>pending review</b>.
+        pending_review_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b>.
+      themes_html: <b>%{requester}</b> updated the theme <b>%{resource}</b>.
+      templates_html: <b>%{requester}</b> updated the template <b>%{resource}</b>.
+      snippets_html: <b>%{requester}</b> updated the snippet <b>%{resource}</b>.
+      servers_html: <b>%{requester}</b> updated the server <b>%{resource}</b>.
+      directories_html: <b>%{requester}</b> updated the directory <b>%{resource}</b> in <b>%{directory_site}</b>.
+      sites_html: <b>%{requester}</b> updated the site <b>%{resource}</b>.
+      institutions_html: <b>%{requester}</b> updated the institution <b>%{resource}</b>.
+      topics_html: <b>%{requester}</b> updated the topic <b>%{resource}</b>.
+      categories_html: <b>%{requester}</b> updated the category <b>%{resource}</b>.
+      users-registrations_html: <b>%{requester}</b> updated the profile section.
+      permissions_html: <b>%{requester}</b> updated the permission <b>%{resource}</b>.
+      roles_html: <b>%{requester}</b> updated the role <b>%{resource}</b>.
+    autoupdate:
+      pages:
+        same_html: <b>%{requester}</b> updated the page <b>%{resource}</b>.
+        draft_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>draft</b> to <b>pending review</b>.
+        pending_review_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b>.
+        publish_html: <b>%{requester}</b> updated the page <b>%{resource}</b>.
+    set_as_draft:
+      pages:
+        same_html: <b>%{requester}</b> converted to draft the page <b>%{resource}</b>.
+    toggle:
+      servers:
+        true_html: <b>%{requester}</b> activated the server <b>%{resource}</b>.
+        false_html: <b>%{requester}</b> deactivated the server <b>%{resource}</b>.
+      templates:
+        true_html: <b>%{requester}</b> activated the template <b>%{resource}</b>.
+        false_html: <b>%{requester}</b> deactivated the template <b>%{resource}</b>.
+    set_index:
+      sites_html: <b>%{requester}</b> updated the site's main page.
+    post_variables:
+      sites_html: <b>%{requester}</b> updated the site's variables.
+    update_user:
+      users-registrations_html: <b>%{requester}</b> updated the user <b>%{user}</b>.
+    save_user_password:
+      users-registrations_html: <b>%{requester}</b> updated the password of the user <b>%{user}</b>.
+    save_password:
+      users-registrations_html: <b>%{requester}</b> updated the password's account.
+    set_revision_as_current:
+      pages:
+        same_html: <b>%{requester}</b> updated the revision for the page <b>%{resource}</b>.
+    assign_permissions:
+      roles_html: <b>%{requester}</b> updated the permissions for the role <b>%{resource}</b>.
+    restore:
+      sites_html: <b>%{requester}</b> restored the site.
+      servers_html: <b>%{requester}</b> restored the server.
+      registrations_html: <b>%{requester}</b> restored the user.
+    synchronize:
+      sites_html: <b>%{requester}</b> synchronized the site.
+    block_user:
+      users-registrations:
+        true_html: <b>%{requester}</b> blocked the user <b>%{user}</b>.
+        false_html: <b>%{requester}</b> unblocked the user <b>%{user}</b>.
+    destroy:
+      pages:
+        same_html: <b>%{requester}</b> deleted the page <b>%{resource}</b>.
+      themes_html: <b>%{requester}</b> deleted the theme <b>%{resource}</b>.
+      templates_html: <b>%{requester}</b> deleted the template <b>%{resource}</b>.
+      snippets_html: <b>%{requester}</b> deleted the snippet <b>%{resource}</b>.
+      media_files_html: <b>%{requester}</b> deleted a media file.
+      servers_html: <b>%{requester}</b> deleted the server <b>%{resource}</b>.
+      directories_html: <b>%{requester}</b> deleted the directory <b>%{resource}</b> in <b>%{directory_site}</b>.
+      sites_html: <b>%{requester}</b> deleted the site <b>%{resource}</b>.
+      institutions_html: <b>%{requester}</b> deleted the institution <b>%{resource}</b>.
+      topics_html: <b>%{requester}</b> deleted the topic <b>%{resource}</b>.
+      categories_html: <b>%{requester}</b> deleted the category <b>%{resource}</b>.
+      users-registrations_html: <b>%{requester}</b> deleted the user <b>%{user}</b>.
+      permissions_html: <b>%{requester}</b> deleted the permission <b>%{resource}</b>.
+      roles_html: <b>%{requester}</b> deleted the role <b>%{resource}</b>.
+    get_ssi_snippet:
+      pages:
+        same_html: <b>%{requester}</b> selected a snippet for the page <b>%{resource}</b>.
+    delete_ssi_snippet:
+      pages:
+        same_html: <b>%{requester}</b> deleted a snippet reference for the page <b>%{resource}</b>.
+    delete_per_lot:
+      users-registrations_html: <b>%{requester}</b> deleted multiple users.
+      pages:
+        same_html: <b>%{requester}</b> deleted multiple pages.
+        draft_html: <b>%{requester}</b> deleted multiple pages.
+        pending_review_html: <b>%{requester}</b> deleted multiple pages.
+      themes_html: <b>%{requester}</b> deleted multiple pages.
+      media_files_html: <b>%{requester}</b> deleted multiple files.
+      servers_html: <b>%{requester}</b> deleted multiple servers.
+      sites_html: <b>%{requester}</b> deleted multiple sites.
+      snippets_html: <b>%{requester}</b> deleted multiple snippets.
+      templates_html: <b>%{requester}</b> deleted multiple templates.
+      institutions_html: <b>%{requester}</b> deleted multiple institutions.
+      topics_html: <b>%{requester}</b> deleted multiple topics.
+      categories_html: <b>%{requester}</b> deleted multiple categories.
+  registrations:
+    create:
+      pages:
+        same_html: Published the page <b>%{resource}</b> a <b>%{site}</b>.
+        draft_html: Changed the page <b>%{resource}</b> from <b>draft</b to <b>pending review</b> on <b>%{site}</b>.
+        pending_review_html: Changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b> on <b>%{site}</b>.
+      themes_html: Added the theme <b>%{resource}</b>.
+      templates_html: Added the template <b>%{resource}</b>.
+      snippets_html: added the snippet <b>%{resource}</b>.
+      servers_html: Created the server <b>%{resource}</b>.
+      directories_html: Created the directory <b>%{resource}</b> in <b>%{directory_site}</b>.
+      sites_html: Created the site <b>%{resource}</b>.
+      institutions_html: Created the institution <b>%{resource}</b>.
+      topics_html: Created the topic <b>%{resource}</b>.
+      categories_html: Created the category <b>%{resource}</b>.
+      users-registrations_html: Created the user <b>%{user}</b>.
+      permissions_html: Created the permission <b>%{resource}</b>.
+      roles_html: Created the role <b>%{resource}</b>.
+    media_record:
+      media_files_html: Added media files in <b>%{site}</b>.
+    autocreate:
+      pages:
+        same_html: Added the page <b>%{resource}</b> on <b>%{site}</b>.
+        draft_html: Changed the page <b>%{resource}</b> from <b>draft</b to <b>pending review</b> on <b>%{site}</b>.
+        pending_review_html: Changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b> on <b>%{site}</b>.
+    update:
+      pages:
+        same_html: Published the page <b>%{resource}</b> in <b>%{site}</b>.
+        draft_html: Changed the page <b>%{resource}</b> from <b>draft</b to <b>pending review</b> on <b>%{site}</b>.
+        pending_review_html: Changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b> on <b>%{site}</b>.
+      themes_html: Updated the theme <b>%{resource}</b>.
+      templates_html: Updated the template <b>%{resource}</b>.
+      snippets_html: Updated the snippet <b>%{resource}</b>.
+      servers_html: Updated the server <b>%{resource}</b>.
+      directories_html: Updated the directory <b>%{resource}</b> in <b>%{directory_site}</b>.
+      sites_html: Updated the site <b>%{resource}</b>.
+      institutions_html: Updated the institution <b>%{resource}</b>.
+      topics_html: Updated the topic <b>%{resource}</b>.
+      categories_html: Updated the category <b>%{resource}</b>.
+      users-registrations_html: Updated the profile section.
+      permissions_html: Updated the permission <b>%{resource}</b>.
+      roles_html: Updated the role <b>%{resource}</b>.
+    autoupdate:
+      pages:
+        same_html: Updated the page <b>%{resource}</b> in <b>%{site}</b>.
+        draft_html: Changed the page <b>%{resource}</b> from <b>draft</b to <b>pending review</b> on <b>%{site}</b>.
+        pending_review_html: Changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b> on <b>%{site}</b>.
+        publish_html: Updated the page <b>%{requester}</b> in <b>%{site}</b>.
+    set_as_draft:
+      pages:
+        same_html: Converted to draft the page <b>%{resource}</b> in <b>%{site}</b>.
+    toggle:
+      servers:
+        true_html: <b>%{requester}</b> activated the server <b>%{resource}</b>.
+        false_html: <b>%{requester}</b> deactivated the server <b>%{resource}</b>.
+      templates:
+        true_html: <b>%{requester}</b> activated the template <b>%{resource}</b>.
+        false_html: <b>%{requester}</b> deactivated the template <b>%{resource}</b>.
+    set_index:
+      sites_html: Updated the site's main page in <b>%{resource}</b>.
+    post_variables:
+      sites_html: Updated the site's variables in <b>%{resource}</b>.
+    update_user:
+      users-registrations_html: Updated the the user <b>%{user}</b>.
+    save_user_password:
+      users-registrations_html: Updated the password of the user <b>%{user}</b>.
+    save_password:
+      users-registrations_html: Updated the password's account.
+    set_revision_as_current:
+      pages:
+        same_html: Updated the revision for the page <b>%{resource}</b> on <b>%{site}</b>.
+    assign_permissions:
+      roles_html: Updated the permissions for the role <b>%{resource}</b>.
+    restore:
+      sites_html: Restored the site <b>%{resource}</b>.
+      servers_html: Restored the server <b>%{resource}</b>.
+      registrations_html: Restored the server <b>%{user}</b>.
+    synchronize:
+      sites_html: Synchronized the site <b>%{resource}</b>.
+    block_user:
+      users-registrations:
+        true_html: <b>%{requester}</b> blocked the user <b>%{user}</b>.
+        false_html: <b>%{requester}</b> unblocked the user <b>%{user}</b>.
+    destroy:
+      pages:
+        same_html: Deleted the page <b>%{resource}</b> in <b>%{site}</b>.
+      themes_html: Deleted the theme <b>%{resource}</b>.
+      templates_html: Deleted the template <b>%{resource}</b>.
+      snippets_html: Deleted the snippet <b>%{resource}</b>.
+      media_files_html: Deleted a media file in <b>%{site}</b>.
+      servers_html: Deleted the server <b>%{resource}</b>.
+      directories_html: Deleted the directory <b>%{resource}</b> in <b>%{directory_site}</b>.
+      sites_html: Deleted the site <b>%{resource}</b>.
+      institutions_html: Deleted the institution <b>%{resource}</b>.
+      topics_html: Deleted the topic <b>%{resource}</b>.
+      categories_html: Deleted the category <b>%{resource}</b>.
+      users-registrations_html: Deleted the user <b>%{user}</b>.
+      permissions_html: Deleted the permission <b>%{resource}</b>.
+      roles_html: Deleted the role <b>%{resource}</b>.
+    get_ssi_snippet:
+      pages:
+        same_html: Selected a snippet for the page <b>%{resource}</b> on <b>%{site}</b>.
+    delete_ssi_snippet:
+      pages:
+        same_html: Deleted a snippet reference for the page <b>%{resource}</b> on <b>%{site}</b>.
+    delete_per_lot:
+      users-registrations_html: <b>%{requester}</b> deleted multiple users.
+      pages:
+        same_html: <b>%{requester}</b> deleted multiple pages.
+        draft_html: <b>%{requester}</b> deleted multiple pages.
+        pending_review_html: <b>%{requester}</b> deleted multiple pages.
+      themes_html: <b>%{requester}</b> deleted multiple pages.
+      media_files_html: <b>%{requester}</b> deleted multiple files.
+      servers_html: <b>%{requester}</b> deleted multiple servers.
+      sites_html: <b>%{requester}</b> deleted multiple sites.
+      snippets_html: <b>%{requester}</b> deleted multiple snippets.
+      templates_html: <b>%{requester}</b> deleted multiple templates.
+      institutions_html: <b>%{requester}</b> deleted multiple institutions.
+      topics_html: <b>%{requester}</b> deleted multiple topics.
+      categories_html: <b>%{requester}</b> deleted multiple categories.
+  detailed_logbook:
+    title: Detailed logbook
+    user: User
+    controller: Controller
+    description: Description
+    action: Action
+    user_ip: IP address
+    permalink: Permalink
+    site: Sitio
+    record_date: Date
+    role: Role
+    sing_in_count: Login count
+    name: Name
+    status: Status
+    publish_date: Publish date
+    today: Today
+    month: Month
+    week: Week
+    single_record: Record
+    multiples_records: Records
+    single_date_title: Detailed logbook (%{start_date})
+    multiples_date_title: Detailed logbook (%{start_date} to %{end_date})
+  pages:
+    create:
+      pages:
+        same_html: <b>%{requester}</b> published the page <b>%{resource}</b> on <b>%{site}</b>.
+        draft_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>draft</b to <b>pending review</b> on <b>%{site}</b>.
+        pending_review_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b> on <b>%{site}</b>.
+    autocreate:
+      pages:
+        same_html: <b>%{requester}</b> added the page <b>%{resource}</b> on <b>%{site}</b>.
+        draft_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>draft</b to <b>pending review</b> on <b>%{site}</b>.
+        pending_review_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b> on <b>%{site}</b>.
+    update:
+      pages:
+        same_html: <b>%{requester}</b> published the page <b>%{resource}</b> in <b>%{site}</b>.
+        draft_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>draft</b to <b>pending review</b> on <b>%{site}</b>.
+        pending_review_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b> on <b>%{site}</b>.
+    autoupdate:
+      pages:
+        same_html: <b>%{requester}</b> updated the page <b>%{resource}</b> in <b>%{site}</b>.
+        draft_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>draft</b to <b>pending review</b> on <b>%{site}</b>.
+        pending_review_html: <b>%{requester}</b> changed the page <b>%{resource}</b> from <b>pending review</b> to <b>draft</b> on <b>%{site}</b>.
+        publish_html: b>%{requester}</b> updated the page <b>%{resource}</b> in <b>%{site}</b>.
+    set_as_draft:
+      pages:
+        same_html: <b>%{requester}</b> converted to draft the page <b>%{resource}</b> in <b>%{site}</b>.
+    set_revision_as_current:
+      pages:
+        same_html: <b>%{requester}</b> updated the revision for the page <b>%{resource}</b> on <b>%{site}</b>.
+    destroy:
+      pages:
+        same_html: <b>%{requester}</b> deleted the page <b>%{resource}</b> in <b>%{site}</b>.
+    get_ssi_snippet:
+      pages:
+        same_html: <b>%{requester}</b> selected a snippet for the page <b>%{resource}</b> on <b>%{site}</b>.
+    delete_ssi_snippet:
+      pages:
+        same_html: <b>%{requester}</b> seleted a snippet reference for the page <b>%{resource}</b> on <b>%{site}</b>.
+  logbook_row:
+    - Date
+    - User
+    - Name
+    - Role
+    - IP address
+    - Login count
+    - Description

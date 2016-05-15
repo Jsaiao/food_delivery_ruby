@@ -37,6 +37,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+        track_actions(@order)
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -49,8 +50,10 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
+    extra_parameters = {old_name: @order.name}
     respond_to do |format|
       if @order.update(order_params)
+        track_actions(@order, extra_parameters)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
       else
@@ -64,6 +67,7 @@ class OrdersController < ApplicationController
   # DELETE /orders/1.json
   def destroy
     @order.destroy
+    track_actions(@order)
     respond_to do |format|
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }

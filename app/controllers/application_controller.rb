@@ -19,6 +19,14 @@ class ApplicationController < ActionController::Base
     true
   end
 
+  # Creates the logbook records
+  def track_actions(object, extra_parameters = nil)
+    action = request.path_parameters[:action]
+    controller = request.path_parameters[:controller].gsub('/', '-')
+
+    Logbook.create_by_object(current_user, object, controller, action, extra_parameters)
+  end
+
   private
 
   # If the user doesn't have permission to perform an action is redirected.

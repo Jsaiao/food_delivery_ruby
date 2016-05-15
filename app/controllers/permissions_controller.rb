@@ -32,6 +32,7 @@ class PermissionsController < ApplicationController
     @permission = Permission.new(permission_params)
     respond_to do |format|
       if @permission.save
+        track_actions(@permission)
         format.html { redirect_to permissions_url, notice: 'Permission was successfully created.' }
         format.json { render :show, status: :created, location: @permission }
       else
@@ -49,8 +50,10 @@ class PermissionsController < ApplicationController
   # PATCH/PUT /permissions/1
   # PATCH/PUT /permissions/1.json
   def update
+    extra_parameters = {old_name: @permission.name}
     respond_to do |format|
       if @permission.update(permission_params)
+        track_actions(@permission, extra_parameters)
         format.html { redirect_to permissions_url, notice: 'Permission was successfully updated.' }
         format.json { render :show, status: :ok, location: @permission }
       else
@@ -69,6 +72,7 @@ class PermissionsController < ApplicationController
   # DELETE /permissions/1.json
   def destroy
     @permission.destroy
+    track_actions(@permission)
     respond_to do |format|
       format.html { redirect_to permissions_url, notice: 'Permission was successfully destroyed.' }
       format.json { head :no_content }

@@ -1,0 +1,63 @@
+<% logbook.each_with_index do |logbook, index| %>
+    <% if index == 0 %>
+        <li class="time-label">
+          <span class="bg-blue-steel"> <%= l(logbook.created_at, format: :timeline_day) %> </span>
+        </li>
+    <% else %>
+        <% if l(logbook.created_at, format: :timeline_day) != @old_date %>
+            <li class="time-label">
+              <span class="bg-blue-steel"> <%= l(logbook.created_at, format: :timeline_day) %> </span>
+            </li>
+        <% end %>
+    <% end %>
+    <% @old_date = l(logbook.created_at, format: :timeline_day) %>
+    <li>
+      <%= render 'logbooks/action_icon', logbook: logbook %>
+      <div class="timeline-item">
+        <div class="arrow-left"></div>
+        <div class="timeline-body row">
+                      <span class="time">
+                        <i class="fa fa-clock-o"></i><%= l(logbook.created_at, format: :timeline) %>
+                      </span>
+
+          <div class="col-sm-1">
+            <%= image_tag show_image_record(logbook.options['requester_image']), class: 'img-circle',
+                          style: 'height: 60px' %>
+          </div>
+          <div class="col-sm-10">
+            <h3 class="timeline-header">
+              <% if current_user.id == logbook.user_id %>
+                  <%= t("my_self.#{Logbook.string_translation(logbook)}_html",
+                        resource: logbook.options['name'],
+                        user: logbook.options['user_full_name'],
+                        site: logbook.options['site_name'],
+                        directory_site: logbook.options['directory_site'],
+                        status: logbook.options['status'],
+                        fileable_name: logbook.options['fileable_name']) %>
+              <% else %>
+                  <%= t("#{controller_name}.#{Logbook.string_translation(logbook)}_html",
+                        requester: logbook.options['requester_full_name'],
+                        resource: logbook.options['name'],
+                        user: logbook.options['user_full_name'],
+                        site: logbook.options['site_name'],
+                        directory_site: logbook.options['directory_site'],
+                        status: logbook.options['status'],
+                        fileable_name: logbook.options['fileable_name']) %>
+              <% end %>
+            </h3>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="collapse details-container" id="details-<%= logbook.id %>">
+            <h4><%= t 'table.details' %></h4>
+            <div class="table-scrollable">
+                  <%= render 'logbooks/default_details', logbook: logbook %>
+            </div>
+          </div>
+        </div>
+        <%= button_tag '<i class="fa fa-plus"></i>'.html_safe, class: 'btn details',
+                       data: {toggle: 'collapse', target: "#details-#{ logbook.id }"},
+                       area: {expanded: 'false', controls: 'collapseExample'} %>
+      </div>
+    </li>
+<% end %>

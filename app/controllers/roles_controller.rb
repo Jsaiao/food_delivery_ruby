@@ -28,6 +28,7 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.save
+        track_actions(@role)
         format.html { redirect_to @role, notice: 'Role was successfully created.' }
         format.json { render :show, status: :created, location: @role }
       else
@@ -40,8 +41,10 @@ class RolesController < ApplicationController
   # PATCH/PUT /roles/1
   # PATCH/PUT /roles/1.json
   def update
+    extra_parameters = {old_name: @role.name}
     respond_to do |format|
       if @role.update(role_params)
+        track_actions(@role, extra_parameters)
         format.html { redirect_to @role, notice: 'Role was successfully updated.' }
         format.json { render :show, status: :ok, location: @role }
       else
@@ -55,6 +58,7 @@ class RolesController < ApplicationController
   # DELETE /roles/1.json
   def destroy
     @role.destroy
+    track_actions(@role)
     respond_to do |format|
       format.html { redirect_to roles_url, notice: 'Role was successfully destroyed.' }
       format.json { head :no_content }

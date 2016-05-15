@@ -41,6 +41,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
+        track_actions(@order)
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -53,8 +54,10 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    extra_parameters = {old_name: @product.name}
     respond_to do |format|
       if @product.update(product_params)
+        track_actions(@product, extra_parameters)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
@@ -68,6 +71,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     @product.destroy
+    track_actions(@product)
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
