@@ -27,6 +27,13 @@ class ApplicationController < ActionController::Base
     Logbook.create_by_object(current_user, object, controller, action, extra_parameters)
   end
 
+  # POST /generate_report
+  # POST /generate_report.json
+  def generate_report
+      report_file = Logbook.generate_report_file(current_user)
+      send_data report_file.spreadsheet.to_stream.read, filename: report_file.file_name
+  end
+
   private
 
   # If the user doesn't have permission to perform an action is redirected.
