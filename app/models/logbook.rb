@@ -20,21 +20,7 @@ class Logbook < ActiveRecord::Base
 
   # Create a string that allows to go and look for the corresponding translation.
   def self.string_translation(logbook)
-    translation = logbook.action + '.' + logbook.controller
-    case
-      when translation.include?('pages')
-        if logbook.options['change']
-          translation + '.' + logbook.options['change']
-        else
-          translation + '.' + 'same'
-        end
-      when translation.include?('block_user'), translation.include?('toggle')
-        translation + '.' + logbook.options['change'].to_s
-      when translation.include?('asset_file_record')
-        translation + '.' + logbook.options['fileable_type'].downcase
-      else
-        translation
-    end
+    logbook.action + '.' + logbook.controller
   end
 
   def logbook_old_name?(logbook)
@@ -50,14 +36,14 @@ class Logbook < ActiveRecord::Base
   def self.generate_report_file(user)
     spreadsheet = Axlsx::Package.new
     workbook = spreadsheet.workbook
-    default_workbook(Logbook.all, workbook)
+    default_workbook(LogbookPolicy::Scope.new(user, Logbook).resolve, workbook)
 
     ReportFile.new(file_name(user), spreadsheet)
   end
 
   # Creates the general workbook of the spreadsheet.
   def self.default_workbook(logbooks, workbook)
-    total_rows = 0
+    total_rows = 1
     workbook.add_worksheet(name: 'Detailed logbook') do |sheet|
       sheet.add_row %w(Date User Name Role IP_address Login_count Description)
       sheet.column_widths 13, 15, 25, 11, 15, 15, 110
@@ -75,6 +61,8 @@ class Logbook < ActiveRecord::Base
       end
       %w(A B C D E F G).each do |letter|
         sheet.add_style "#{letter}2:#{letter}#{total_rows.to_s}", bg_color: 'F5F5EB'
+        sheet.add_border "#{letter}2:#{letter}#{total_rows.to_s}", [:bottom, :left, :right, :top]
+        sheet.add_border "#{letter}1:#{letter}1:", [:bottom, :left, :right, :top]
       end
     end
     total_rows

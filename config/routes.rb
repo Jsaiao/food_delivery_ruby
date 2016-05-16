@@ -100,4 +100,5 @@ Rails.application.routes.draw do
   post '/make_order/:address_id', to: 'carts#make_order', as: :make_order
   # Generates a xlsx file of the detailed logbook.
   post '/generate_report', to: 'application#generate_report', as: :generate_report
+  post '/orders/generate_order_pdf/:id', to: 'orders#generate_pdf', as: :generate_order_pdf
 end

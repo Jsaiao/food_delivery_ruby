@@ -28,7 +28,6 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       if @cart.save
-        track_actions(@cart)
         format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
         format.json { render :show, status: :created, location: @cart }
       else
@@ -41,10 +40,8 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
-    extra_parameters = {old_name: @category.name}
     respond_to do |format|
       if @cart.update(cart_params)
-        track_actions(@category, extra_parameters)
         format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
         format.json { render :show, status: :ok, location: @cart }
       else
@@ -58,7 +55,6 @@ class CartsController < ApplicationController
   # DELETE /carts/1.json
   def destroy
     @cart.destroy
-    track_actions(@cart)
     respond_to do |format|
       format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
       format.json { head :no_content }

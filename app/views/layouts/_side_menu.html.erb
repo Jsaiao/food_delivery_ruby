@@ -107,6 +107,9 @@
             </ul>
           </li>
       <% end %>
+      <%if current_user.has_total_scope?%>
+          <li class="header">Access</li>
+      <%end %>
       <% if has_policy(Permission, %w(new index)) %>
           <li class="header">Access</li>
           <li class="treeview">
