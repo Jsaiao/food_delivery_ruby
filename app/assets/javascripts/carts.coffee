@@ -33,8 +33,10 @@ $(window).bind 'page:change', ->
     return
 
   removeProduct = (obj) ->
-    num = Number(($(obj).prev().text()).replace('$', '')) - 1
-    $(obj).prev().empty().append "" + num + ""
+    num = Number(($(obj).prev().text()).replace('$', ''))
+    if num > 0
+      num -= 1
+      $(obj).prev().empty().append "" + num + ""
     return
 
   $('.inline-flex > button').on 'click', ->

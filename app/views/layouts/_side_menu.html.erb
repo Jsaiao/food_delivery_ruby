@@ -107,9 +107,8 @@
             </ul>
           </li>
       <% end %>
-
-      <li class="header">Access</li>
       <% if has_policy(Permission, %w(new index)) %>
+          <li class="header">Access</li>
           <li class="treeview">
             <a href="javascript:;">
               <i class="fa fa-ban"></i> <span>Permissions</span> <i class="fa fa-angle-left pull-right"></i>
