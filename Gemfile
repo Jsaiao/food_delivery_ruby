@@ -85,6 +85,12 @@ gem 'private_pub', '~> 1.0.3'
 # A thin and fast web server
 gem 'thin', '~> 1.6.4'
 
+# Is a simple ActiveRecord mixin that lets you generate a workbook.
+gem 'axlsx_rails', '~> 0.4.0'
+
+# Allows to build clean and maintainable Excel views in a Rails app.
+gem 'axlsx_styler', '~> 0.1.2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
