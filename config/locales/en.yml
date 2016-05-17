@@ -20,6 +20,34 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  my_self:
+    create:
+      permissions_html: You created the permission <b>%{resource}</b>.
+      products_html: You created the product <b>%{resource}</b>.
+      roles_html: You created the role <b>%{resource}</b>.
+    update:
+      orders_html: You updated the order <b>%{resource}</b>.
+      permissions_html: You updated the permission <b>%{resource}</b>.
+      products_html: You updated the product <b>%{resource}</b>.
+      roles_html: You updated the role <b>%{resource}</b>.
+    destroy:
+      permissions_html: You deleted the permission <b>%{resource}</b>.
+      roles_html: You deleted the role <b>%{resource}</b>.
+      products_html: You deleted the product <b>%{resource}</b>.
+  home:
+    create:
+      permissions_html: <b>%{requester}</b> added the permission <b>%{resource}</b>.
+      products_html: <b>%{requester}</b> added the product <b>%{resource}</b>.
+      roles_html: <b>%{requester}</b> added the role <b>%{resource}</b>.
+    update:
+      orders_html: <b>%{requester}</b> updated the order <b>%{resource}</b>.
+      permissions_html: <b>%{requester}</b> updated the permission <b>%{resource}</b>.
+      products_html: <b>%{requester}</b> updated the product <b>%{resource}</b>.
+      roles_html: <b>%{requester}</b> updated the role <b>%{resource}</b>.
+    destroy:
+      permissions_html: <b>%{requester}</b> deleted the permission <b>%{resource}</b>.
+      roles_html: <b>%{requester}</b> deleted the role <b>%{resource}</b>.
+      products_html: <b>%{requester}</b> deleted the product <b>%{resource}</b>.
   date:
     abbr_day_names:
     - Sun

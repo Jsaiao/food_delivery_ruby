@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :generate_pdf]
 
   # GET /orders
   # GET /orders.json
@@ -37,7 +37,6 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        track_actions(@order)
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -67,10 +66,20 @@ class OrdersController < ApplicationController
   # DELETE /orders/1.json
   def destroy
     @order.destroy
-    track_actions(@order)
     respond_to do |format|
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def generate_pdf
+    pdf_name = current_user.username + '_' + Time.now.strftime('%Y%d%m_%H%M%S') + '.xlsx'
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: pdf_name,
+        layout: 'order_report'
+      end
     end
   end
 

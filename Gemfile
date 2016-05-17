@@ -91,6 +91,10 @@ gem 'axlsx_rails', '~> 0.4.0'
 # Allows to build clean and maintainable Excel views in a Rails app.
 gem 'axlsx_styler', '~> 0.1.2'
 
+gem 'wicked_pdf', '~> 1.0.6'
+
+gem 'wkhtmltopdf-binary', '~> 0.9.9.3'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
