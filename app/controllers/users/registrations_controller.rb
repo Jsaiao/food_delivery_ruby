@@ -69,7 +69,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
       set_flash_message :notice, :updated
       sign_in @user, bypass: true
-      redirect_to user_path(@user)
+      render 'edit'
     else
       render 'edit'
     end
@@ -199,21 +199,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def sign_up_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :mother_last_name,
+    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :mother_last_name, :username,
                                  :role_id, :avatar, :avatar_original_w, :avatar_original_h, :avatar_box_w,
                                  :avatar_aspect, :avatar_crop_x, :avatar_crop_y, :avatar_crop_w, :avatar_crop_h,
                                  addresses_attributes: [:id, :street, :city, :zipcode, :phone_number,:state, :_destroy])
   end
 
   def account_update_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :mother_last_name,
+    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :mother_last_name, :username,
                                  :role_id, :avatar, :avatar_original_w, :avatar_original_h, :avatar_box_w,
                                  :avatar_aspect, :avatar_crop_x, :avatar_crop_y, :avatar_crop_w, :avatar_crop_h,
                                  addresses_attributes: [:id, :street, :city, :zipcode, :phone_number,:state, :_destroy])
   end
 
   def profile_update_params
-    params.require(:user).permit(:email, :current_password, :password, :password_confirmation, :first_name, :last_name,
+    params.require(:user).permit(:email, :current_password, :password, :password_confirmation, :first_name, :last_name, :username,
                                  :mother_last_name, :avatar, :avatar_original_w, :avatar_original_h, :avatar_box_w,
                                  :avatar_aspect, :avatar_crop_x, :avatar_crop_y, :avatar_crop_w, :avatar_crop_h,
                                  addresses_attributes: [:id, :street, :city, :zipcode, :phone_number,:state, :_destroy])

@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates_presence_of :username, :email, :first_name, :last_name
+
   attr_accessor :current_password
 
   has_many :conversations, foreign_key: :sender_id
