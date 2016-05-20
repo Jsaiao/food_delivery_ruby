@@ -45,11 +45,30 @@
   .message {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 400;
   }
   .form-control {
     border-color: #dd4b39;
     box-shadow: none;
   }
+}
+
+.add-product-effect {
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #824ca5;
+  border: none;
+  box-shadow: 0 9px #999;
+}
+
+.add-product-effect:hover {
+  background-color: #663c80;
+  color: white;
+}
+
+.add-product-effect:active {
+  transform: translateY(4px);
 }
