@@ -21,6 +21,7 @@
 //= require cocoon
 //= require pagination.js
 //= require icheck
+//= require rails.validations
 //= require chat
 //= require bootstrap-slider/bootstrap-slider
 //= require fastclick/fastclick

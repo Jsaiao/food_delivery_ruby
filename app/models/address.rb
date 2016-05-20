@@ -15,6 +15,7 @@
 #
 
 class Address < ActiveRecord::Base
+  validates_presence_of :street, :city, :state, :zipcode, :phone_number
   belongs_to :addresable, polymorphic: true
   has_many :orders
 

@@ -14,5 +14,7 @@ class Restaurant < ActiveRecord::Base
   has_many :users
   has_many :addresses, as: :addressable
 
+  validates_presence_of :name, :description
+
   accepts_nested_attributes_for :addresses, allow_destroy: true, reject_if: :all_blank
 end
