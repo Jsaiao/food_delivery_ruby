@@ -21,18 +21,22 @@
       <table class="table table-hover">
         <thead>
         <tr>
-          <th style="width: 10px"></th>
-          <th>User</th>
+          <% if current_user.role.key != 'client' %>
+              <th>User</th>
+          <% end %>
           <th>Reference number</th>
+          <th>Date</th>
           <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         <% @orders.each do |order| %>
             <tr>
-              <td><%= %></td>
-              <td><%= order.user %></td>
+              <% if current_user.role.key != 'client' %>
+                  <td><%= order.user.first_name %> <%= order.user.last_name %></td>
+              <% end %>
               <td><%= order.reference_number %></td>
+              <td><%= l(order.created_at.to_time, format: :views) %></td>
               <td class="actions">
                 <div>
                   <%= link_to '<i class="fa fa-search"></i>'.html_safe, order, class: 'btn btn-flat btn-xs bg-green' %>
