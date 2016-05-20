@@ -43,14 +43,18 @@
               <% end %>
               <td class="actions">
                 <div>
-                  <%= link_to '<i class="fa fa-cart-plus" aria-hidden="true"></i>'.html_safe, 'javascript:;',
-                              class: 'btn btn-flat btn-xs bg-purple add-product', data: {id: product.id} %>
+                  <% if has_policy(Product, %w(add_product_to_car)) %>
+                      <%= link_to '<i class="fa fa-cart-plus" aria-hidden="true"></i>'.html_safe, 'javascript:;',
+                                  class: 'btn btn-flat btn-xs bg-purple add-product', data: {id: product.id} %>
+                  <% end %>
                   <%= link_to '<i class="fa fa-search"></i>'.html_safe, 'javascript:;', class: 'view-product btn btn-flat btn-xs bg-green',
                               data: {id: product.id} %>
-                  <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_product_path(product),
-                              class: 'btn btn-flat btn-xs bg-blue' %>
-                  <%= link_to '<i class="fa fa-trash"></i>'.html_safe, product, method: :delete,
-                              data: {confirm: 'Are you sure?'}, class: 'btn btn-flat btn-xs bg-red' %>
+                  <%= link_item '<i class="fa fa-pencil"></i>'.html_safe, edit_product_path(product),
+                                class: 'btn btn-flat btn-xs bg-blue' %>
+                  <% if has_policy(Product, %w(destroy)) %>
+                      <%= link_to '<i class="fa fa-trash"></i>'.html_safe, product, method: :delete,
+                                  data: {confirm: 'Are you sure?'}, class: 'btn btn-flat btn-xs bg-red' %>
+                  <% end %>
                 </div>
               </td>
             </tr>

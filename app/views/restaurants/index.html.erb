@@ -34,11 +34,13 @@
               <td><%= restaurant.description %></td>
               <td class="actions">
                 <div>
-                  <%= link_to '<i class="fa fa-search"></i>'.html_safe, restaurant, class: 'btn btn-flat btn-xs bg-green' %>
+                  <%#= link_to '<i class="fa fa-search"></i>'.html_safe, restaurant, class: 'btn btn-flat btn-xs bg-green' %>
                   <%= link_to '<i class="fa fa-leaf"></i>'.html_safe, restaurant_dishes_path(restaurant.id), class: 'btn btn-flat btn-xs bg-yellow' %>
-                  <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_restaurant_path(restaurant), class: 'btn btn-flat btn-xs bg-blue' %>
-                  <%= link_to '<i class="fa fa-trash"></i>'.html_safe, restaurant, method: :delete,
-                              data: {confirm: 'Are you sure?'}, class: 'btn btn-flat btn-xs bg-red' %>
+                  <%= link_item '<i class="fa fa-pencil"></i>'.html_safe, edit_restaurant_path(restaurant), class: 'btn btn-flat btn-xs bg-blue' %>
+                  <% if has_policy(Restaurant, %w(destroy)) %>
+                      <%= link_to '<i class="fa fa-trash"></i>'.html_safe, restaurant, method: :delete,
+                                  data: {confirm: 'Are you sure?'}, class: 'btn btn-flat btn-xs bg-red' %>
+                  <% end %>
                 </div>
               </td>
             </tr>

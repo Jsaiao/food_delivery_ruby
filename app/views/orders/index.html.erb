@@ -36,9 +36,9 @@
               <td class="actions">
                 <div>
                   <%= link_to '<i class="fa fa-search"></i>'.html_safe, order, class: 'btn btn-flat btn-xs bg-green' %>
-                  <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_order_path(order), class: 'btn btn-flat btn-xs bg-blue' %>
+                  <%#= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_order_path(order), class: 'btn btn-flat btn-xs bg-blue' %>
                   <%= link_to '<i class="fa fa-file-pdf-o"></i>'.html_safe, generate_order_pdf_path(order), method: :post, class: 'btn btn-flat btn-xs bg-purple' %>
-                  <%= link_to '<i class="fa fa-trash"></i>'.html_safe, order, method: :delete,
+                  <%#= link_to '<i class="fa fa-trash"></i>'.html_safe, order, method: :delete,
                               data: {confirm: 'Are you sure?'}, class: 'btn btn-flat btn-xs bg-red' %>
                 </div>
               </td>

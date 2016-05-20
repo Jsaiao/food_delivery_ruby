@@ -88,7 +88,7 @@ class ProductsController < ApplicationController
     end
 
     respond_to do |format|
-      format.js {render template: 'carts/update_cart.js.erb'}
+      format.js { render template: 'carts/update_cart.js.erb' }
     end
   end
 
@@ -96,22 +96,26 @@ class ProductsController < ApplicationController
     @cart = current_user.carts.where(product_id: @product.id).first.update(quantity: params[:quantity])
 
     respond_to do |format|
-      format.js {render template: 'carts/update_cart.js.erb'}
+      format.js { render template: 'carts/update_cart.js.erb' }
     end
   end
 
   def one_less_product
     @cart = current_user.carts.where(product_id: @product.id).first
-    @cart.quantity -= 1
-    @cart.save
+
+    if @cart.quantity < 1
+      @cart.quantity -= 1
+      @cart.save
+    end
 
     respond_to do |format|
-      format.js {render template: 'carts/update_cart.js.erb'}
+      format.js { render template: 'carts/update_cart.js.erb' }
     end
   end
 
   def delete_product_from_cart
     @cart = Cart.find(params[:id])
+    @cart.destroy
 
     respond_to do |format|
       format.js

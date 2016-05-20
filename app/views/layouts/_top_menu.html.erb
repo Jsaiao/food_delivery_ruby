@@ -17,15 +17,14 @@
         <li class="dropdown user user-menu">
           <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
             <%= image_tag 'user.png', class: 'user-image' %>
-            <span class="hidden-xs">User Name</span>
+            <span class="hidden-xs"><%= current_user.username %></span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
               <%= image_tag 'user.png', class: 'img-circle' %>
               <p>
-                Alexander Pierce - Web Developer
-                <small>Member since Nov. 2012</small>
+                <%= current_user.first_name %> <%= current_user.last_name %>
               </p>
             </li>
             <!-- Menu Body -->

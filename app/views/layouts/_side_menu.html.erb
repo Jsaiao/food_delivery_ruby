@@ -7,7 +7,9 @@
         <%= image_tag 'user.png', class: 'img-circle' %>
       </div>
       <div class="pull-left info">
-        <p>Alexander Pierce</p>
+        <p>
+          <%= current_user.first_name %> <%= current_user.last_name %>
+        </p>
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
     </div>
@@ -107,9 +109,9 @@
             </ul>
           </li>
       <% end %>
-      <%if current_user.has_total_scope?%>
+      <% if current_user.has_total_scope? %>
           <li class="header">Access</li>
-      <%end %>
+      <% end %>
       <% if has_policy(Permission, %w(new index)) %>
           <li class="header">Access</li>
           <li class="treeview">
