@@ -1,4 +1,7 @@
 $(window).bind('page:change', function () {
+
+    $('form').enableClientSideValidations();
+
     //iCheck initializer
     $('input').iCheck({
         checkboxClass: 'icheckbox_square-blue',
