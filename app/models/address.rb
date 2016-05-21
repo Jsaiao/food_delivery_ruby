@@ -18,6 +18,8 @@ class Address < ActiveRecord::Base
   belongs_to :addresable, polymorphic: true
   has_many :orders
 
+  validates_presence_of :addresable_id
+
   def get_address
     "#{self.street}, #{self.city}, #{self.state} #{self.zipcode}"
   end

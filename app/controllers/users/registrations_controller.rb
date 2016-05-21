@@ -200,21 +200,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def sign_up_params
     params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :mother_last_name, :username,
-                                 :role_id, :avatar, :avatar_original_w, :avatar_original_h, :avatar_box_w,
+                                 :role_id, :avatar, :avatar_original_w, :avatar_original_h, :avatar_box_w, :restaurant_id,
                                  :avatar_aspect, :avatar_crop_x, :avatar_crop_y, :avatar_crop_w, :avatar_crop_h,
                                  addresses_attributes: [:id, :street, :city, :zipcode, :phone_number,:state, :_destroy])
   end
 
   def account_update_params
     params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :mother_last_name, :username,
-                                 :role_id, :avatar, :avatar_original_w, :avatar_original_h, :avatar_box_w,
+                                 :role_id, :avatar, :avatar_original_w, :avatar_original_h, :avatar_box_w, :restaurant_id,
                                  :avatar_aspect, :avatar_crop_x, :avatar_crop_y, :avatar_crop_w, :avatar_crop_h,
                                  addresses_attributes: [:id, :street, :city, :zipcode, :phone_number,:state, :_destroy])
   end
 
   def profile_update_params
     params.require(:user).permit(:email, :current_password, :password, :password_confirmation, :first_name, :last_name, :username,
-                                 :mother_last_name, :avatar, :avatar_original_w, :avatar_original_h, :avatar_box_w,
+                                 :mother_last_name, :avatar, :avatar_original_w, :avatar_original_h, :avatar_box_w, :restaurant_id,
                                  :avatar_aspect, :avatar_crop_x, :avatar_crop_y, :avatar_crop_w, :avatar_crop_h,
                                  addresses_attributes: [:id, :street, :city, :zipcode, :phone_number,:state, :_destroy])
   end

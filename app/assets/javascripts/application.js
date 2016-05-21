@@ -16,6 +16,7 @@
 //= require select2/select2.full
 //= require slimScroll/jquery.slimscroll
 //= require private_pub
+//= require rails.validations
 //= require bootstrap
 //= require cocoon
 //= require pagination.js
