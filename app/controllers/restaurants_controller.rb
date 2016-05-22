@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:show, :edit, :update, :destroy, :dishes]
+  before_action :set_restaurant, only: [:show, :edit, :update, :destroy, :dishes, :view_restaurant_users]
   skip_before_action :authenticate_user!, :is_authorized, :verify_authenticity_token, only: [:index_mobile]
 
   # GET /restaurants
@@ -67,6 +67,13 @@ class RestaurantsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def view_restaurant_users
+    @users = @restaurant.users
+    respond_to do |format|
+      format.js { render 'display_users' }
     end
   end
 

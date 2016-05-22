@@ -1,6 +1,6 @@
 class ConversationsController < ApplicationController
 
-  layout false
+  layout false, only: [:create, :show]
 
   def create
     if Conversation.between(params[:sender_id],params[:recipient_id]).present?
@@ -17,6 +17,15 @@ class ConversationsController < ApplicationController
     @reciever = interlocutor(@conversation)
     @messages = @conversation.messages
     @message = Message.new
+  end
+
+  def index
+    @users = []
+    User.all.each do |user|
+      if Conversation.between(current_user.id,user.id).present?
+        @users << user
+      end
+    end
   end
 
   private

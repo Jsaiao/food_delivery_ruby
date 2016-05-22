@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_presence_of :username, :email, :first_name, :last_name, :mother_last_name, :password
+  validates_presence_of :username, :email, :first_name, :last_name, :mother_last_name
 
   attr_accessor :current_password
 
