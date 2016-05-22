@@ -7,6 +7,7 @@
  *
  */
 
+$(window).bind('page:change', function () {
 
 var chatboxFocus = new Array();
 var chatBoxes = new Array();
@@ -306,4 +307,4 @@ var ready = function () {
 }
 
 $(document).ready(ready);
-$(document).on("page:load", ready);
+});

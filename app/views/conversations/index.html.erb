@@ -35,11 +35,6 @@
               <td><%= user.role_name %></td>
               <td class="actions">
                 <div>
-                  <%= link_to '<i class="fa fa-search"></i>'.html_safe, user_path(user), class: 'btn btn-flat btn-xs bg-green' %>
-                  <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_user_path(user), class: 'btn btn-flat btn-xs bg-blue' %>
-                  <%= link_to '<i class="fa fa-key"></i>'.html_safe, change_user_password_path(user), class: 'btn btn-xs bg-purple' %>
-                  <%= link_to '<i class="fa fa-trash"></i>'.html_safe, user, method: :delete,
-                              data: {confirm: 'Are you sure?'}, class: 'btn btn-flat btn-xs bg-red' %>
                   <%= link_to '<i class="fa fa-comment-o "></i>'.html_safe, 'javascript:;', class: 'btn btn-flat btn-xs bg-yellow start-conversation', data: {sid: current_user.id, rip: user.id} %>
                 </div>
               </td>
@@ -49,7 +44,7 @@
       </table>
     </div><!-- /.box-body -->
     <div class="box-footer clearfix">
-      <%= custom_paginator @users, 'no-margin pull-right' %>
+      <%#= will_paginate @users, 'no-margin pull-right' %>
     </div>
   </div>
 </section>

@@ -101,4 +101,6 @@ Rails.application.routes.draw do
   # Generates a xlsx file of the detailed logbook.
   post '/generate_report', to: 'application#generate_report', as: :generate_report
   post '/orders/generate_order_pdf/:id', to: 'orders#generate_pdf', as: :generate_order_pdf
+  get '/view_restaurant_users/:id', to: 'restaurants#view_restaurant_users', as: :view_restaurant_users
+  #get '/conversations', to: 'conversations#index', as: :conversations
 end

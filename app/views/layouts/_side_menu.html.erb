@@ -27,15 +27,24 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li class="header">Main Navigation</li>
+      <% if has_policy(Conversation, %w(index)) %>
+          <li class="treeview">
+            <a href="javascript:;">
+              <i class="fa fa-comment-o "></i> <span>Conversation</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li>
+                <%= link_item '<i class="fa fa-circle-o "></i> View Conversations'.html_safe, conversations_path %>
+              </li>
+            </ul>
+          </li>
+      <% end %>
       <% if has_policy(Cart, %w(new index)) %>
           <li class="treeview">
             <a href="javascript:;">
               <i class="fa fa-shopping-cart"></i> <span>Carts</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-              <li>
-                <%= link_item '<i class="fa fa-circle-o"></i> Add Cart'.html_safe, new_cart_path %>
-              </li>
               <li>
                 <%= link_item '<i class="fa fa-circle-o"></i> View Carts'.html_safe, carts_path %>
               </li>
@@ -113,7 +122,6 @@
           <li class="header">Access</li>
       <% end %>
       <% if has_policy(Permission, %w(new index)) %>
-          <li class="header">Access</li>
           <li class="treeview">
             <a href="javascript:;">
               <i class="fa fa-ban"></i> <span>Permissions</span> <i class="fa fa-angle-left pull-right"></i>
