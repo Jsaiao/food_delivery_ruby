@@ -66,5 +66,13 @@ Permission.create!([
   {name: "Nueva Direccion", description: "Nueva direccion", action: "new", controller: "Addresses"},
   {name: "Ver Direccion", description: "Ver direccion", action: "show", controller: "Addresses"},
   {name: "Actualizar Direccion", description: "Actualizar direccion", action: "update", controller: "Addresses"},
-  {name: "Ver Modal De Producto", description: "modal de producto", action: "view_product", controller: "Products"}
+  {name: "Ver Modal De Producto", description: "modal de producto", action: "view_product", controller: "Products"},
+  {name: "Mostrar Usuarios De Un Restaurante", description: "Permite mostrar un listado de los usuarios pertenecientes a un restaurante.", action: "view_restaurant_users", controller: "Restaurants"},
+  {name: "Crear Conversación", description: "Permite crear una conversación entre usuarios.", action: "create", controller: "Conversations"},
+  {name: "Mostrar Listado De Conversaciones", description: "Permite a un usuario visualizar sus conversaciones.", action: "index", controller: "Conversations"},
+  {name: "Mostrar Conversaciones", description: "Permite mostrar una conversación.", action: "show", controller: "Conversations"},
+  {name: "Crear Mensaje", description: "Permite crear un mensaje de una conversación.", action: "create", controller: "Messages"},
+  {name: "Generar Pdf", description: "Permite generar un pdf de una orden.", action: "generate_pdf", controller: "Orders"},
+  {name: "Mostrar Listado De Productos Para Celular", description: "Permite mostrar un listado de los productos para un celular.", action: "index_mobile", controller: "Products"},
+  {name: "Mostrar Listado De Restaurantes Para Celular", description: "Permite mostrar un listado de los restaurantes para un celular.", action: "index_mobile", controller: "Restaurants"}
 ])
