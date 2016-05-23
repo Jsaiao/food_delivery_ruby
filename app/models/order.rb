@@ -20,7 +20,9 @@ class Order < ActiveRecord::Base
   def get_cart_products
     carts = self.user.carts
     carts.each do |cart|
-      self.order_products.create(product_id: cart.product.id, price: cart.product.price, quantity: cart.quantity)
+      if cart.quantity > 0
+        self.order_products.create(product_id: cart.product.id, price: cart.product.price, quantity: cart.quantity)
+      end
     end
     self.user.carts.destroy_all
   end

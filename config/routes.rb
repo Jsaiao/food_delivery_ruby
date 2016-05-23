@@ -96,6 +96,7 @@ Rails.application.routes.draw do
   post '/set_quantity/:id/:quantity', to: 'products#set_quantity', as: :set_quantity
   post '/one_less_product/:id', to: 'products#one_less_product', as: :one_less_product
   post '/delete_product_from_cart/:id', to: 'products#delete_product_from_cart', as: :delete_product_from_cart
+  post '/set_quantity_mobile/:id/:product_id/:quantity', to: 'products#set_quantity_mobile', as: :set_quantity_mobile
   get '/user_cart', to: 'carts#user_cart', as: :user_cart
   get '/generate_cart_json', to: 'carts#generate_cart_json', as: :generate_cart_json
   get '/user_cart_mobile/:id', to: 'carts#user_cart_mobile', as: :user_cart_mobile

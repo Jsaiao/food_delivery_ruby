@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy, :add_product_to_cart,
                                      :set_quantity, :one_less_product, :view_product, :add_product_to_cart_mobile, :one_less_product_mobile]
-  skip_before_action :authenticate_user!, :is_authorized, only: [:index_mobile, :add_product_to_cart_mobile, :one_less_product_mobile]
-  skip_before_filter :verify_authenticity_token, only: [:add_product_to_cart_mobile, :one_less_product_mobile]
+  skip_before_action :authenticate_user!, :is_authorized, only: [:index_mobile, :add_product_to_cart_mobile, :one_less_product_mobile, :set_quantity_mobile]
+  skip_before_filter :verify_authenticity_token, only: [:add_product_to_cart_mobile, :one_less_product_mobile, :set_quantity_mobile]
 
 
 
@@ -130,6 +130,12 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.js { render template: 'carts/update_cart.js.erb' }
     end
+  end
+
+  def set_quantity_mobile
+    user = User.find(params[:id])
+    @cart = user.carts.where(product_id: params[:product_id]).first.update(quantity: params[:quantity])
+    render json: @cart, status: :ok
   end
 
   def one_less_product
