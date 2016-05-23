@@ -66,6 +66,24 @@ class CartsController < ApplicationController
     @cart_products = @user.carts
   end
 
+  def generate_cart_json
+    json = []
+    @user = current_user
+    @cart_products = @user.carts
+    @cart_products.each_with_index do |cart, index|
+      new_json = {}
+      new_json[:name] = cart.product.name
+      new_json[:product_id] = cart.product.id
+      new_json[:quantity] = cart.quantity
+      new_json[:id] = cart.id
+      new_json[:price] = cart.product.price
+      new_json[:number] = index + 1
+      new_json[:total_price] = (cart.product.price * cart.quantity).round(2)
+      json << new_json
+    end
+    render json: json
+  end
+
   def place_order
     @user = current_user
     @cart_products = @user.carts

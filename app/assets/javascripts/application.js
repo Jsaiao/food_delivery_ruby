@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jQuery-ui/jquery-ui
+//= require angular
+//= require angular-animate
+//= require angular-resource
 //= require select2/select2.full
 //= require slimScroll/jquery.slimscroll
 //= require private_pub

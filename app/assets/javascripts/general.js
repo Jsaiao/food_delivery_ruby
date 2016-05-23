@@ -1,3 +1,5 @@
+angular.module('myApp', []);
+
 $(window).bind('page:change', function () {
 
     $('form').enableClientSideValidations();
@@ -13,6 +15,8 @@ $(window).bind('page:change', function () {
     $.AdminLTE.pushMenu.activate("[data-toggle='offcanvas']");
     $.AdminLTE.controlSidebar.activate("[data-toggle='control-sidebar']");
     $(ClientSideValidations.selectors.forms).enableClientSideValidations();
+
+    angular.bootstrap(document.body, ['myApp']);
 });
 
 $('.dropdown-toggle').on('click', function () {

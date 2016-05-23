@@ -87,9 +87,7 @@ class ProductsController < ApplicationController
       @cart.save
     end
 
-    respond_to do |format|
-      format.js { render template: 'carts/update_cart.js.erb' }
-    end
+    render nothing: true, status: :ok, content_type: 'text/html'
   end
 
   def set_quantity
@@ -103,23 +101,19 @@ class ProductsController < ApplicationController
   def one_less_product
     @cart = current_user.carts.where(product_id: @product.id).first
 
-    if @cart.quantity < 1
+    if @cart.quantity > 1
       @cart.quantity -= 1
       @cart.save
     end
 
-    respond_to do |format|
-      format.js { render template: 'carts/update_cart.js.erb' }
-    end
+    render nothing: true, status: :ok, content_type: 'text/html'
   end
 
   def delete_product_from_cart
     @cart = Cart.find(params[:id])
     @cart.destroy
 
-    respond_to do |format|
-      format.js
-    end
+    render nothing: true, status: :ok, content_type: 'text/html'
   end
 
   def view_product
