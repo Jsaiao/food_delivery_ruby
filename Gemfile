@@ -95,12 +95,14 @@ gem 'wicked_pdf', '~> 1.0.6'
 
 gem 'wkhtmltopdf-binary', '~> 0.9.9.3'
 
+<<<<<<< a442bb92fbd9e3897757c48e538dcee9bc970191
 <<<<<<< f555b5969f460ae8aceecc977c8510ba27f10298
 gem 'angularjs-rails', '~> 1.5.5'
 gem 'rails_12factor', group: :production
 
 gem 'pg'
 
+gem 'angularjs-rails', '~> 1.5.5'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

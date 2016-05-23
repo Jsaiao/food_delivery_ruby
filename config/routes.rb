@@ -99,8 +99,11 @@ Rails.application.routes.draw do
   post '/set_quantity_mobile/:id/:product_id/:quantity', to: 'products#set_quantity_mobile', as: :set_quantity_mobile
   get '/user_cart', to: 'carts#user_cart', as: :user_cart
   get '/generate_cart_json', to: 'carts#generate_cart_json', as: :generate_cart_json
+<<<<<<< a442bb92fbd9e3897757c48e538dcee9bc970191
   get '/user_cart_mobile/:id', to: 'carts#user_cart_mobile', as: :user_cart_mobile
   get '/get_total/:id', to: 'carts#get_total', as: :get_total
+=======
+>>>>>>> Se modifica estructura de jquery a angular para gestionar un carrito
   get '/place_order', to: 'carts#place_order', as: :place_order
   get '/view_product/:id', to: 'products#view_product', as: :view_product
   post '/make_order/:address_id', to: 'carts#make_order', as: :make_order

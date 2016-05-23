@@ -96,6 +96,7 @@ class ProductsController < ApplicationController
     end
 
     render nothing: true, status: :ok, content_type: 'text/html'
+<<<<<<< a442bb92fbd9e3897757c48e538dcee9bc970191
   end
 
   def add_product_to_cart_mobile
@@ -122,6 +123,8 @@ class ProductsController < ApplicationController
     end
 
     render json: @cart, status: :ok
+=======
+>>>>>>> Se modifica estructura de jquery a angular para gestionar un carrito
   end
 
   def set_quantity
