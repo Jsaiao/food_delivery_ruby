@@ -72,3 +72,86 @@
 .add-product-effect:active {
   transform: translateY(4px);
 }
+
+.logbook-report-request {
+  float: right;
+  position: absolute;
+  right: 44px;
+  z-index: 1;
+}
+
+.details-container {
+  border: 1px dashed #999999;
+  margin-top: 10px;
+  padding: 0 10px;
+}
+
+.timeline > li > .timeline-item {
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-item .btn.details {
+  width: 100%;
+  bottom: 0;
+  height: 20px;
+  text-align: right;
+  padding: 0 0 10px 0;
+  background-color: white;
+  color: #364150;
+  outline: 0;
+}
+
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #E2E2E2;
+  position: absolute;
+  left: -10px;
+  top: 8px;
+}
+
+.time {
+  float: right;
+  margin-right: 15px;
+}
+
+.details-container > .table-scrollable > .table > thead > tr > th:last-child {
+  text-align: left;
+}
+
+.timeline > li {
+  position: relative;
+  margin-right: 0;
+  margin-bottom: 15px;
+
+  .fa-users-registrations:before {
+    content: "\f0c0";
+  }
+
+  .fa-orders:before {
+    content: "\f00b";
+  }
+
+  .fa-restaurants:before {
+    content: "\f041";
+  }
+
+  .fa-products:before {
+    content: "\f06c";
+  }
+
+  .fa-roles:before {
+    content: "\f023";
+  }
+
+  .fa-permissions:before {
+    content: "\f05e";
+  }
+
+  .fa-application:before {
+    content: "\f1c9";
+  }
+}

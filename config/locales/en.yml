@@ -23,31 +23,49 @@ en:
   my_self:
     create:
       permissions_html: You created the permission <b>%{resource}</b>.
-      products_html: You created the product <b>%{resource}</b>.
+      products_html: You added the product <b>%{resource}</b>.
+      restaurants_html: You added the restaurant <b>%{resource}</b>.
       roles_html: You created the role <b>%{resource}</b>.
+      orders_html: You place an order.
     update:
       orders_html: You updated the order <b>%{resource}</b>.
       permissions_html: You updated the permission <b>%{resource}</b>.
       products_html: You updated the product <b>%{resource}</b>.
+      restaurants_html: You updated the restaurant <b>%{resource}</b>.
       roles_html: You updated the role <b>%{resource}</b>.
+      users-registrations_html: You updated your profile.
     destroy:
       permissions_html: You deleted the permission <b>%{resource}</b>.
       roles_html: You deleted the role <b>%{resource}</b>.
       products_html: You deleted the product <b>%{resource}</b>.
+      restaurants_html: You deleted the restaurant <b>%{resource}</b>.
+    save_user_password:
+      users-registrations_html: You change <b>%{user}</b>'s password.
+    save_password:
+      users-registrations_html: You change your password
   home:
     create:
       permissions_html: <b>%{requester}</b> added the permission <b>%{resource}</b>.
       products_html: <b>%{requester}</b> added the product <b>%{resource}</b>.
+      restaurants_html: <b>%{requester}</b> added the restaurant <b>%{resource}</b>.
       roles_html: <b>%{requester}</b> added the role <b>%{resource}</b>.
+      orders_html: <b>%{requester}</b> place an order.
     update:
       orders_html: <b>%{requester}</b> updated the order <b>%{resource}</b>.
       permissions_html: <b>%{requester}</b> updated the permission <b>%{resource}</b>.
       products_html: <b>%{requester}</b> updated the product <b>%{resource}</b>.
+      restaurants_html: <b>%{requester}</b> updated the restaurant <b>%{resource}</b>.
       roles_html: <b>%{requester}</b> updated the role <b>%{resource}</b>.
+      users-registrations_html: <b>%{requester}</b> update the profile seccion.
     destroy:
       permissions_html: <b>%{requester}</b> deleted the permission <b>%{resource}</b>.
       roles_html: <b>%{requester}</b> deleted the role <b>%{resource}</b>.
       products_html: <b>%{requester}</b> deleted the product <b>%{resource}</b>.
+      restaurants_html: <b>%{requester}</b> deleted the restaurant <b>%{resource}</b>.
+    save_user_password:
+      users-registrations_html: <b>%{requester}</b> change <b>%{user}</b>'s password.
+    save_password:
+      users-registrations_html: <b>%{requester}</b> change password.
   date:
     abbr_day_names:
     - Sun
