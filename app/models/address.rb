@@ -16,10 +16,9 @@
 
 class Address < ActiveRecord::Base
   validates_presence_of :street, :city, :state, :zipcode, :phone_number
+  validates_numericality_of :zipcode, :phone_number
   belongs_to :addresable, polymorphic: true
   has_many :orders
-
-  validates_presence_of :addresable_id
 
   def get_address
     "#{self.street}, #{self.city}, #{self.state} #{self.zipcode}"

@@ -22,4 +22,19 @@ module ApplicationHelper
       ActionController::Base.helpers.asset_path('user.png')
     end
   end
+
+  def asset_data_base64(path)
+    asset = Rails.application.assets.find_asset(path)
+    throw "Could not find asset '#{path}'" if asset.nil?
+    base64 = Base64.encode64(asset.to_s).gsub(/\s+/, "")
+    "data:#{asset.content_type};base64,#{Rack::Utils.escape(base64)}"
+  end
+
+  def get_total_price(orders)
+    total_price = 0
+    orders.order_products.each do |order|
+      total_price +=  order.product.price * order.quantity
+    end
+    total_price.round(2)
+  end
 end

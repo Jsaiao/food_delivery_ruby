@@ -73,24 +73,23 @@ class OrdersController < ApplicationController
   end
 
   def generate_pdf
-    pdf_name = current_user.username + '_' + Time.now.strftime('%Y%d%m_%H%M%S') + '.xlsx'
-    respond_to do |format|
-      format.html
-      format.pdf do
-        render pdf: pdf_name,
-        layout: 'order_report'
-      end
-    end
+    pdf_name = current_user.username + '_' + Time.now.strftime('%Y%d%m_%H%M%S')
+    html = render_to_string(action: :generate_pdf, layout: false)
+    pdf = WickedPdf.new.pdf_from_string(html)
+
+    send_data(pdf,
+              filename: pdf_name,
+              disposition: 'attachment')
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order
+    @order = Order.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def order_params
-      params.require(:order).permit(:user_id, :reference_number, :address_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def order_params
+    params.require(:order).permit(:user_id, :reference_number, :address_id)
+  end
 end
