@@ -40,6 +40,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+        track_actions(@order)
         format.html { redirect_to orders_url, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
