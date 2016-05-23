@@ -8,12 +8,14 @@ angular.module('myApp')
     })
 
     .controller('CartCtrl', function ($scope, $http) {
-
         $http({
             method: "GET",
             url: "/generate_cart_json"
         }).then(function mySucces(response) {
             $scope.entries = response.data;
+            if (response.data.length == 0){
+                $('#order-button')[0].setAttribute("hidden", true);
+            }
         });
 
         $scope.addProduct = function (arguments) {
@@ -38,21 +40,23 @@ angular.module('myApp')
 
         $scope.removeProduct = function (arguments) {
             var product = arguments;
-            $http({
-                method: "POST",
-                url: '/one_less_product/' + arguments
-            }).then(function mySucces(response) {
-                var price = '#price-product-' + product;
-                var subtotal = '#subtotal-product-' + product;
-                var quantity = '#quantity-product-' + product;
-                var total = 0;
-                $(subtotal).html((Number($(subtotal).html()) - Number($(price).html())).toFixed(2));
-                $(quantity).html((Number($(quantity).html())) - 1);
-                $('.subtotal').each(function (index, value) {
-                    total = total + Number($(this).html());
+            var quantity = '#quantity-product-' + product;
+            if (Number($(quantity).html()) != 1) {
+                $http({
+                    method: "POST",
+                    url: '/one_less_product/' + arguments
+                }).then(function mySucces(response) {
+                    var price = '#price-product-' + product;
+                    var subtotal = '#subtotal-product-' + product;
+                    var total = 0;
+                    $(subtotal).html((Number($(subtotal).html()) - Number($(price).html())).toFixed(2));
+                    $(quantity).html((Number($(quantity).html())) - 1);
+                    $('.subtotal').each(function (index, value) {
+                        total = total + Number($(this).html());
+                    });
+                    $('#total-price').html('$ ' + total.toFixed(2));
                 });
-                $('#total-price').html('$ ' + total.toFixed(2));
-            });
+            }
         };
 
         $scope.deleteProductFromCart = function (arguments) {
@@ -68,6 +72,9 @@ angular.module('myApp')
                     total = total + Number($(this).html());
                 });
                 $('#total-price').html('$ ' + total.toFixed(2));
+                if ($('.subtotal').length == 0){
+                    $('#order-button')[0].setAttribute("hidden", true);
+                }
             });
         };
 

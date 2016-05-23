@@ -4,7 +4,8 @@ class RolesController < ApplicationController
   # GET /roles
   # GET /roles.json
   def index
-    @roles = Role.all.paginate(page: params[:page], per_page: 15)
+    @search_roles = Role.all.ransack(params[:q])
+    @roles = @search_roles.result.paginate(page: params[:page], per_page: 15)
   end
 
   # GET /roles/1

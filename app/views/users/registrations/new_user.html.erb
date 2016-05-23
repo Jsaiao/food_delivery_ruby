@@ -38,14 +38,6 @@
               <%= f.text_field :mother_last_name, class: 'form-control' %>
             </div>
           </div>
-          <div>
-            <%= f.fields_for :addresses do |address| %>
-                <%= render '/shared/address_fields', f: address %>
-            <% end %>
-            <%= link_to_add_association "<i class='fa fa-plus'></i> Add Address".html_safe, f,
-                                        :addresses, class: 'form-control',
-                                        partial: '/shared/address_fields' %>
-          </div>
           <div class="field">
             <%= f.label :role_id %>
             <%= f.collection_select(:role_id, Role.all, :id, :name, {prompt: 'Please select'}, {class: 'form-control'}) %>

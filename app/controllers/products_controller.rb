@@ -8,9 +8,11 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     if current_user.has_restaurant_scope?
-      @products = current_user.restaurant.products.paginate(page: params[:page], per_page: 15)
+      @search_products = current_user.restaurant.products.ransack(params[:q])
+      @products = @search_products.result.paginate(page: params[:page], per_page: 15)
     else
-      @products = Product.all.paginate(page: params[:page], per_page: 15)
+      @search_products = Product.all.ransack(params[:q])
+      @products = @search_products.result.paginate(page: params[:page], per_page: 15)
     end
   end
 
