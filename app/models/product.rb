@@ -21,7 +21,7 @@ class Product < ActiveRecord::Base
   has_attached_file :image, styles: {medium: '300x300>', thumb: '100x100>'}
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-  validates_presence_of :name, :description, :price, :image ,:restaurant_id
+  validates_presence_of :name, :description, :price, :restaurant_id
   validates_numericality_of :price
 
   belongs_to :restaurant
