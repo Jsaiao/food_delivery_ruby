@@ -1,15 +1,25 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
 
+  skip_before_action :authenticate_user!, :is_authorized, only: [:index_mobile, :show]
+  skip_before_filter :verify_authenticity_token, only: [:index_mobile, :show]
+
   # GET /addresses
   # GET /addresses.json
   def index
     @addresses = current_user.addresses
   end
 
+  def index_mobile
+    @user = User.find(params[:id])
+    @addresses = @user.addresses
+    render json: @addresses, status: :ok
+  end
+
   # GET /addresses/1
   # GET /addresses/1.json
   def show
+    render json: @address, status: :ok
   end
 
   # GET /addresses/new

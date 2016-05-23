@@ -17,6 +17,10 @@
 #  updated_at             :datetime         not null
 #  role_id                :integer
 #  restaurant_id          :integer
+#  username               :string
+#  first_name             :string
+#  last_name              :string
+#  mother_last_name       :string
 #
 
 class User < ActiveRecord::Base

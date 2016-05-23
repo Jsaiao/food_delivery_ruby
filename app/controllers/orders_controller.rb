@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy, :generate_pdf]
+  skip_before_action :authenticate_user!, :is_authorized, only: [:index_mobile]
+  skip_before_filter :verify_authenticity_token, only: [:index_mobile]
 
   # GET /orders
   # GET /orders.json
@@ -16,6 +18,15 @@ class OrdersController < ApplicationController
       @search_orders = current_user.orders.ransack(params[:q])
       @orders = @search_orders.result.paginate(page: params[:page], per_page: 15)
     end
+  end
+
+  def index_mobile
+    @orders = User.find(params[:id]).orders
+    @json = []
+    @orders.each do |order|
+      @json << {id: order.id, reference_number: order.reference_number,created_at: l(order.created_at, format: :views), street: order.address.get_address}
+    end
+    render json: @json, status: :ok
   end
 
   # GET /orders/1

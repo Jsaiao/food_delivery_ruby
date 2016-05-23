@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: logbooks
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  action     :string
+#  controller :string
+#  options    :jsonb
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Logbook < ActiveRecord::Base
   def self.create_by_object(user, object, controller, action, params)
       self.create(user_id: user.id, action: action, controller: controller, options: parse_options(user, object, params))

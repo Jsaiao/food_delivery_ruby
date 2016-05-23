@@ -1,6 +1,9 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
+  skip_before_action :authenticate_user!, :is_authorized, only: [:user_cart_mobile, :make_order_mobile, :get_total]
+  skip_before_filter :verify_authenticity_token, only: [:user_cart_mobile, :make_order_mobile, :get_total]
+
   # GET /carts
   # GET /carts.json
   def index
@@ -84,11 +87,39 @@ class CartsController < ApplicationController
     render json: json
   end
 
+  def user_cart_mobile
+    @user = User.find(params[:id])
+    @cart_products = @user.carts
+
+    render json: @cart_products, status: :ok
+  end
+
   def place_order
     @user = current_user
     @cart_products = @user.carts
     @order = Order.new
   end
+
+  def make_order_mobile
+    @user = User.find(params[:id])
+    @cart_products = @user.carts
+    @order = Order.new(user_id: @user.id, address_id: params[:address_id])
+    @order.reference_number = "#{Time.now.to_i}_#{@user.id}"
+    @order.save
+    render json: @order, status: :ok
+  end
+
+  def get_total
+    @user = User.find(params[:id])
+    @cart_products = @user.carts
+    @total = 0
+    @cart_products.each do |cart|
+      @total += cart.product.price * cart.quantity
+    end
+    @json = {total: @total}
+    render json: @json, status: :ok
+  end
+
 
   def make_order
     @address = Address.find(params[:address_id])
@@ -96,13 +127,13 @@ class CartsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cart
-      @cart = Cart.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_cart
+    @cart = Cart.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def cart_params
-      params.require(:cart).permit(:user_id, :product_id, :quantity)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def cart_params
+    params.require(:cart).permit(:user_id, :product_id, :quantity)
+  end
 end
