@@ -39,7 +39,7 @@
               <td><%= user.role_name %></td>
               <td class="actions">
                 <div>
-                  <%= link_to '<i class="fa fa-search"></i>'.html_safe, user_path(user), class: 'btn btn-flat btn-xs bg-green' %>
+                  <%#= link_to '<i class="fa fa-search"></i>'.html_safe, user_path(user), class: 'btn btn-flat btn-xs bg-green' %>
                   <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_user_path(user), class: 'btn btn-flat btn-xs bg-blue' %>
                   <%= link_to '<i class="fa fa-key"></i>'.html_safe, change_user_password_path(user), class: 'btn btn-xs bg-purple' %>
                   <%= link_to '<i class="fa fa-trash"></i>'.html_safe, user, method: :delete,

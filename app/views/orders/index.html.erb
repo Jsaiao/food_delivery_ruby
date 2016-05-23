@@ -10,7 +10,7 @@
       <div class="box-tools">
         <div class="input-group input-group-sm" style="width: 150px;">
           <%= search_form_for @search_orders, url: url_for(controller: 'orders', action: 'index') do |f| %>
-              <%= f.text_field :user_first_name_or_reference_number_cont,
+              <%= f.text_field :user_first_name_or__cont,
                                class: 'form-control pull-right',
                                type: 'search', placeholder: 'Search',
                                onkeyup: 'searchBlock(event)', style: 'height: 30px;'%>
@@ -40,7 +40,7 @@
                   <td><%= order.user.first_name %> <%= order.user.last_name %></td>
               <% end %>
               <td><%= order.reference_number %></td>
-              <td><%= l(order.created_at.to_time, format: :views) %></td>
+              <td><%= l(order.created_at.try(:to_time), format: :views) %></td>
               <td class="actions">
                 <div>
                   <%= link_to '<i class="fa fa-search"></i>'.html_safe, order, class: 'btn btn-flat btn-xs bg-green' %>
