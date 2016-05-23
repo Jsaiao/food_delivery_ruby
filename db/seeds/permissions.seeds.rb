@@ -74,5 +74,6 @@ Permission.create!([
   {name: "Crear Mensaje", description: "Permite crear un mensaje de una conversación.", action: "create", controller: "Messages"},
   {name: "Generar Pdf", description: "Permite generar un pdf de una orden.", action: "generate_pdf", controller: "Orders"},
   {name: "Mostrar Listado De Productos Para Celular", description: "Permite mostrar un listado de los productos para un celular.", action: "index_mobile", controller: "Products"},
-  {name: "Mostrar Listado De Restaurantes Para Celular", description: "Permite mostrar un listado de los restaurantes para un celular.", action: "index_mobile", controller: "Restaurants"}
+  {name: "Mostrar Listado De Restaurantes Para Celular", description: "Permite mostrar un listado de los restaurantes para un celular.", action: "index_mobile", controller: "Restaurants"},
+  {name: "Generar Json Del Carrito", description: "Permite generar el json de un carrito.", action: "generate_cart_json", controller: "Carts"}
 ])
