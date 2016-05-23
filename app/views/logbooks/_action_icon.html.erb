@@ -3,6 +3,10 @@
     <i class="fa fa-<%= logbook.controller %> bg-green"></i>
 <% when logbook.action == 'update' %>
     <i class="fa fa-<%= logbook.controller %> bg-blue"></i>
+<% when logbook.action == 'save_user_password' %>
+    <i class="fa fa-<%= logbook.controller %> bg-purple"></i>
+<% when logbook.action == 'save_password' %>
+    <i class="fa fa-<%= logbook.controller %> bg-blue"></i>
 <% when logbook.action == 'destroy' %>
     <i class="fa fa-<%= logbook.controller %> bg-red"></i>
 <% end %>
