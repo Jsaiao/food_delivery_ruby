@@ -11,7 +11,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /users
   # GET /users.json
   def index
-    @users = policy_scope(User).paginate(page: params[:page], per_page: 15)
+    @search_users = policy_scope(User).ransack(params[:q])
+    @users = @search_users.result.paginate(page: params[:page], per_page: 15)
   end
 
   # GET /users/1

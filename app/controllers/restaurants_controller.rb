@@ -5,7 +5,8 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
   def index
-    @restaurants = Restaurant.all.paginate(page: params[:page], per_page: 15)
+    @search_restaurants = Restaurant.all.ransack(params[:q])
+    @restaurants = @search_restaurants.result.paginate(page: params[:page], per_page: 15)
   end
 
   def index_mobile

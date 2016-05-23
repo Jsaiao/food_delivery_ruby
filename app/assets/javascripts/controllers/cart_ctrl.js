@@ -8,7 +8,6 @@ angular.module('myApp')
     })
 
     .controller('CartCtrl', function ($scope, $http) {
-
         $http({
             method: "GET",
             url: "/generate_cart_json"
