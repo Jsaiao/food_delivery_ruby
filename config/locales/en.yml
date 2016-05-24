@@ -35,7 +35,7 @@ en:
       roles_html: You updated the role <b>%{resource}</b>.
       users-registrations_html: You updated your profile.
     update_user:
-      users-registrations_html: You updated <b>%{user}</b>'s password.
+      users-registrations_html: You updated <b>%{user}</b>'s profile.
     destroy:
       permissions_html: You deleted the permission <b>%{resource}</b>.
       roles_html: You deleted the role <b>%{resource}</b>.
@@ -60,7 +60,7 @@ en:
       roles_html: <b>%{requester}</b> updated the role <b>%{resource}</b>.
       users-registrations_html: <b>%{requester}</b> update the profile seccion.
     update_user:
-      users-registrations_html: <b>%{requester}</b> updated <b>%{user}</b>'s password.
+      users-registrations_html: <b>%{requester}</b> updated <b>%{user}</b>'s profile.
     destroy:
       permissions_html: <b>%{requester}</b> deleted the permission <b>%{resource}</b>.
       roles_html: <b>%{requester}</b> deleted the role <b>%{resource}</b>.
