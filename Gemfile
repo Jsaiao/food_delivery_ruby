@@ -97,9 +97,6 @@ gem 'wkhtmltopdf-binary', '~> 0.9.9.3'
 
 gem 'angularjs-rails', '~> 1.5.5'
 gem 'rails_12factor', group: :production
-
-gem 'pg'
-
 gem 'angularjs-rails', '~> 1.5.5'
 gem 'rails_12factor', group: :production
 
