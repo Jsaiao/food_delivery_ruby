@@ -9,3 +9,9 @@ test:
   encoding: unicode
   database: food_delivery_test
   pool: 5
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: food_delivery_dev
+  pool: 5
