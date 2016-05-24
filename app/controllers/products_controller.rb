@@ -1,7 +1,9 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy, :add_product_to_cart,
-                                     :set_quantity, :one_less_product, :view_product]
-  skip_before_action :authenticate_user!, :is_authorized, only: [:index_mobile]
+                                     :set_quantity, :one_less_product, :view_product, :add_product_to_cart_mobile, :one_less_product_mobile]
+  skip_before_action :authenticate_user!, :is_authorized, only: [:index_mobile, :add_product_to_cart_mobile, :one_less_product_mobile, :set_quantity_mobile]
+  skip_before_filter :verify_authenticity_token, only: [:add_product_to_cart_mobile, :one_less_product_mobile, :set_quantity_mobile]
+
 
 
   # GET /products
@@ -17,7 +19,11 @@ class ProductsController < ApplicationController
   end
 
   def index_mobile
-    @products = Restaurant.find(params[:restaurant_id]).products
+    if params[:restaurant_id] == '0'
+      @products = Product.all
+    else
+      @products = Restaurant.find(params[:restaurant_id]).products
+    end
     render json: @products, status: :ok
   end
 
@@ -92,12 +98,44 @@ class ProductsController < ApplicationController
     render nothing: true, status: :ok, content_type: 'text/html'
   end
 
+  def add_product_to_cart_mobile
+    user = User.find(params[:user_id])
+    if user.carts.where(product_id: @product.id).empty?
+      @cart = user.carts.create(product_id: @product.id, quantity: 1)
+    else
+      @cart = user.carts.where(product_id: @product.id).first
+      @cart.quantity += 1
+      @cart.save
+    end
+
+    render json: @cart, status: :ok
+  end
+
+  def one_less_product_mobile
+    user = User.find(params[:user_id])
+
+    @cart = user.carts.where(product_id: @product.id).first
+
+    if @cart.quantity > 0
+      @cart.quantity -= 1
+      @cart.save
+    end
+
+    render json: @cart, status: :ok
+  end
+
   def set_quantity
     @cart = current_user.carts.where(product_id: @product.id).first.update(quantity: params[:quantity])
 
     respond_to do |format|
       format.js { render template: 'carts/update_cart.js.erb' }
     end
+  end
+
+  def set_quantity_mobile
+    user = User.find(params[:id])
+    @cart = user.carts.where(product_id: params[:product_id]).first.update(quantity: params[:quantity])
+    render json: @cart, status: :ok
   end
 
   def one_less_product

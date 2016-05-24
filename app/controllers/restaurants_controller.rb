@@ -14,7 +14,8 @@ class RestaurantsController < ApplicationController
   end
 
   def dishes
-    @products = @restaurant.products.paginate(page: params[:page], per_page: 15)
+    @search_products = @restaurant.products.all.ransack(params[:q])
+    @products = @search_products.result.paginate(page: params[:page], per_page: 15)
   end
 
   # GET /restaurants/1
