@@ -87,7 +87,6 @@ class CartsController < ApplicationController
     render json: json
   end
 
-<<<<<<< a442bb92fbd9e3897757c48e538dcee9bc970191
   def user_cart_mobile
     @user = User.find(params[:id])
     @cart_products = @user.carts
@@ -95,8 +94,6 @@ class CartsController < ApplicationController
     render json: @cart_products, status: :ok
   end
 
-=======
->>>>>>> Se modifica estructura de jquery a angular para gestionar un carrito
   def place_order
     @user = current_user
     @cart_products = @user.carts

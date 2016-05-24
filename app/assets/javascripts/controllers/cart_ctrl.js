@@ -8,21 +8,14 @@ angular.module('myApp')
     })
 
     .controller('CartCtrl', function ($scope, $http) {
-<<<<<<< a442bb92fbd9e3897757c48e538dcee9bc970191
-=======
-
->>>>>>> Se modifica estructura de jquery a angular para gestionar un carrito
         $http({
             method: "GET",
             url: "/generate_cart_json"
         }).then(function mySucces(response) {
             $scope.entries = response.data;
-<<<<<<< a442bb92fbd9e3897757c48e538dcee9bc970191
-            if (response.data.length == 0){
+            if (response.data.length == 0) {
                 $('#order-button')[0].setAttribute("hidden", true);
             }
-=======
->>>>>>> Se modifica estructura de jquery a angular para gestionar un carrito
         });
 
         $scope.addProduct = function (arguments) {
@@ -47,7 +40,6 @@ angular.module('myApp')
 
         $scope.removeProduct = function (arguments) {
             var product = arguments;
-<<<<<<< a442bb92fbd9e3897757c48e538dcee9bc970191
             var quantity = '#quantity-product-' + product;
             if (Number($(quantity).html()) != 1) {
                 $http({
@@ -65,23 +57,6 @@ angular.module('myApp')
                     $('#total-price').html('$ ' + total.toFixed(2));
                 });
             }
-=======
-            $http({
-                method: "POST",
-                url: '/one_less_product/' + arguments
-            }).then(function mySucces(response) {
-                var price = '#price-product-' + product;
-                var subtotal = '#subtotal-product-' + product;
-                var quantity = '#quantity-product-' + product;
-                var total = 0;
-                $(subtotal).html((Number($(subtotal).html()) - Number($(price).html())).toFixed(2));
-                $(quantity).html((Number($(quantity).html())) - 1);
-                $('.subtotal').each(function (index, value) {
-                    total = total + Number($(this).html());
-                });
-                $('#total-price').html('$ ' + total.toFixed(2));
-            });
->>>>>>> Se modifica estructura de jquery a angular para gestionar un carrito
         };
 
         $scope.deleteProductFromCart = function (arguments) {
@@ -97,12 +72,9 @@ angular.module('myApp')
                     total = total + Number($(this).html());
                 });
                 $('#total-price').html('$ ' + total.toFixed(2));
-<<<<<<< a442bb92fbd9e3897757c48e538dcee9bc970191
-                if ($('.subtotal').length == 0){
+                if ($('.subtotal').length == 0) {
                     $('#order-button')[0].setAttribute("hidden", true);
                 }
-=======
->>>>>>> Se modifica estructura de jquery a angular para gestionar un carrito
             });
         };
 
