@@ -13,7 +13,7 @@ angular.module('myApp')
             url: "/generate_cart_json"
         }).then(function mySucces(response) {
             $scope.entries = response.data;
-            if (response.data.length == 0){
+            if (response.data.length == 0) {
                 $('#order-button')[0].setAttribute("hidden", true);
             }
         });
@@ -72,7 +72,7 @@ angular.module('myApp')
                     total = total + Number($(this).html());
                 });
                 $('#total-price').html('$ ' + total.toFixed(2));
-                if ($('.subtotal').length == 0){
+                if ($('.subtotal').length == 0) {
                     $('#order-button')[0].setAttribute("hidden", true);
                 }
             });
