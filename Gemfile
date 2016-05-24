@@ -103,6 +103,8 @@ gem 'rails_12factor', group: :production
 gem 'pg'
 
 gem 'angularjs-rails', '~> 1.5.5'
+gem 'rails_12factor', group: :production
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
