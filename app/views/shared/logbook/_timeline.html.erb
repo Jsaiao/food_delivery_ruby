@@ -1,0 +1,19 @@
+<% unless logbook.empty? %>
+    <%= link_to '<i class="fa fa-file-excel-o"></i>'.html_safe, generate_report_path,
+                {method: :post, class: 'screen-block logbook-report-request btn btn-default'} %>
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="timeline" id="logbooks_records">
+            <%= render 'logbooks/logbook', logbook: logbook %>
+            <li class="logbook-loading-page">
+              <i class="fa fa-clock-o bg-gray"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+<% end %>
+<div id="infinite-scrolling" style="display:none;">
+  <%= will_paginate(logbook) %>
+</div>

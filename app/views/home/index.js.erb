@@ -1,0 +1,11 @@
+$('#logbooks_records').append('<%= escape_javascript render('logbooks/logbook', logbook: @logbook) %>');
+<% if @logbook.next_page %>
+  $('.logbook-loading-page').remove();
+  $('.pagination').replaceWith('<%= escape_javascript will_paginate(@logbook) %>');
+  $('#logbooks_records').append('<li class="logbook-loading-page"><i class="fa fa-clock-o bg-gray"></i></li>');
+<% else %>
+  $(window).off('scroll');
+  $('.logbook-loading-page').remove();
+  $('#logbooks_records').append('<li class="logbook-loading-page"><i class="fa fa-clock-o bg-gray"></i></li>');
+  $('.pagination').remove();
+<% end %>

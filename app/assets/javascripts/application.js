@@ -12,5 +12,26 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jQuery-ui/jquery-ui
+//= require angular
+//= require angular-animate
+//= require angular-resource
+//= require select2/select2.full
+//= require slimScroll/jquery.slimscroll
+//= require private_pub
+//= require rails.validations
+//= require bootstrap
+//= require cocoon
+//= require pagination.js
+//= require icheck
+//= require rails.validations
+//= require chat
+//= require bootstrap-slider/bootstrap-slider
+//= require fastclick/fastclick
+//= require pace/pace
+//= require toastr/toastr.min
 //= require turbolinks
+//= require app
+//= require general
 //= require_tree .
+

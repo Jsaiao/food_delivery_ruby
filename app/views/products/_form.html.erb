@@ -1,0 +1,63 @@
+<div class="box">
+  <div class="box-header with-border">
+    <h3 class="box-title">Food Dishes</h3>
+    <div class="box-tools">
+      <%= link_to '<i class="fa fa-arrow-left"></i> Back'.html_safe, products_path, class: 'btn btn-xs btn-flat bg-gray' %>
+    </div>
+  </div>
+  <!-- /.box-header -->
+  <!-- form start -->
+  <%= form_for(@product, html: {class: 'form-horizontal'}, validate: true) do |f| %>
+      <div class="box-body">
+        <div class="form-group">
+          <%= f.label :name, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.text_field :description, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :price, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.text_field :price, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :image, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.file_field :image, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :active, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.check_box :active, class: 'form-control' %>
+          </div>
+        </div>
+
+        <% if current_user.god? and @product.new_record? %>
+            <div class="form-group">
+              <%= f.label :restaurant_id, class: 'col-sm-2 control-label' %>
+              <div class="col-sm-10">
+                <%= f.collection_select(:restaurant_id, Restaurant.all, :id, :name, {prompt: 'Select one'},
+                                        {class: 'form-control'}) %>
+              </div>
+            </div>
+        <% end %>
+
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer">
+        <div class="col-sm-offset-2">
+          <%= f.button 'Send', class: 'btn btn-primary' %>
+        </div>
+      </div>
+  <% end %>
+</div>

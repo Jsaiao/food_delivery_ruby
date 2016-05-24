@@ -1,0 +1,157 @@
+.price {
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 20px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-weight: bold;
+}
+
+.clear {
+  .modal-dialog > .modal-content > .modal-body {
+    background-color: #F1F1F1 !important;
+    div {
+      color: black;
+    }
+  }
+}
+
+.left {
+  text-align: left !important;
+}
+
+.right {
+  text-align: right !important;
+}
+
+.center {
+  text-align: center !important;
+}
+
+.inline-flex {
+  display: inline-flex;
+  div {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+
+/* Client Side Validation */
+.field_with_errors {
+  label {
+    color: #dd4b39;
+  }
+  .message {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+  }
+  .form-control {
+    border-color: #dd4b39;
+    box-shadow: none;
+  }
+}
+
+.add-product-effect {
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #824ca5;
+  border: none;
+  box-shadow: 0 9px #999;
+}
+
+.add-product-effect:hover {
+  background-color: #663c80;
+  color: white;
+}
+
+.add-product-effect:active {
+  transform: translateY(4px);
+}
+
+.logbook-report-request {
+  float: right;
+  position: absolute;
+  right: 44px;
+  z-index: 1;
+}
+
+.details-container {
+  border: 1px dashed #999999;
+  margin-top: 10px;
+  padding: 0 10px;
+}
+
+.timeline > li > .timeline-item {
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-item .btn.details {
+  width: 100%;
+  bottom: 0;
+  height: 20px;
+  text-align: right;
+  padding: 0 0 10px 0;
+  background-color: white;
+  color: #364150;
+  outline: 0;
+}
+
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #E2E2E2;
+  position: absolute;
+  left: -10px;
+  top: 8px;
+}
+
+.time {
+  float: right;
+  margin-right: 15px;
+}
+
+.details-container > .table-scrollable > .table > thead > tr > th:last-child {
+  text-align: left;
+}
+
+.timeline > li {
+  position: relative;
+  margin-right: 0;
+  margin-bottom: 15px;
+
+  .fa-users-registrations:before {
+    content: "\f0c0";
+  }
+
+  .fa-orders:before {
+    content: "\f00b";
+  }
+
+  .fa-restaurants:before {
+    content: "\f041";
+  }
+
+  .fa-products:before {
+    content: "\f06c";
+  }
+
+  .fa-roles:before {
+    content: "\f023";
+  }
+
+  .fa-permissions:before {
+    content: "\f05e";
+  }
+
+  .fa-application:before {
+    content: "\f1c9";
+  }
+}

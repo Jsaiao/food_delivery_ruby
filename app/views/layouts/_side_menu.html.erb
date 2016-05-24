@@ -1,0 +1,172 @@
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- Sidebar user panel -->
+    <div class="user-panel">
+      <div class="pull-left image">
+        <%= image_tag 'user.png', class: 'img-circle' %>
+      </div>
+      <div class="pull-left info">
+        <p>
+          <%= current_user.first_name %> <%= current_user.last_name %>
+        </p>
+        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+      </div>
+    </div>
+    <!-- search form -->
+    <form action="javascript:;" method="get" class="sidebar-form">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+      </div>
+    </form>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+      <li class="header">Main Navigation</li>
+      <% if has_policy(Conversation, %w(index)) %>
+          <li class="treeview">
+            <a href="javascript:;">
+              <i class="fa fa-comment-o "></i> <span>Conversation</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li>
+                <%= link_item '<i class="fa fa-circle-o "></i> View Conversations'.html_safe, conversations_path %>
+              </li>
+            </ul>
+          </li>
+      <% end %>
+      <% if has_policy(Cart, %w(new index)) %>
+          <li class="treeview">
+            <a href="javascript:;">
+              <i class="fa fa-shopping-cart"></i> <span>Carts</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li>
+                <%= link_item '<i class="fa fa-circle-o"></i> View Carts'.html_safe, carts_path %>
+              </li>
+            </ul>
+          </li>
+      <% end %>
+      <% if current_user.role.key == 'client' %>
+          <li class="treeview">
+            <a href="javascript:;">
+              <i class="fa fa-shopping-cart"></i> <span>Carts</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li>
+                <%= link_item '<i class="fa fa-circle-o"></i> View Cart'.html_safe, user_cart_path %>
+              </li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="javascript:;">
+              <i class="fa fa-map-marker"></i> <span>Addresses</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li>
+                <%= link_item '<i class="fa fa-circle-o"></i> Add Address'.html_safe, new_address_path %>
+              </li>
+              <li>
+                <%= link_item '<i class="fa fa-circle-o"></i> View Addresses'.html_safe, addresses_path %>
+              </li>
+            </ul>
+          </li>
+      <% end %>
+      <% if has_policy(Order, %w(new index)) %>
+          <li class="treeview">
+            <a href="javascript:;">
+              <i class="fa fa-th-list"></i> <span>Orders</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li>
+                <%= link_item '<i class="fa fa-circle-o"></i> View Orders'.html_safe, orders_path %>
+              </li>
+            </ul>
+          </li>
+      <% end %>
+      <% if has_policy(Product, %w(new index)) %>
+          <li class="treeview">
+            <a href="javascript:;">
+              <i class="fa fa-leaf"></i> <span>Food Dishes</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li>
+                <%= link_item '<i class="fa fa-circle-o"></i> Add Food Dish'.html_safe, new_product_path %>
+              </li>
+              <li>
+                <%= link_item '<i class="fa fa-circle-o"></i> View Dishes'.html_safe, products_path %>
+              </li>
+            </ul>
+          </li>
+      <% end %>
+      <% if has_policy(Restaurant, %w(new index)) %>
+          <li class="treeview">
+            <a href="javascript:;">
+              <i class="fa fa-map-marker"></i> <span>Restaurants</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li>
+                <%= link_item '<i class="fa fa-circle-o"></i> Add Restaurant'.html_safe, new_restaurant_path %>
+              </li>
+              <li>
+                <%= link_item '<i class="fa fa-circle-o"></i> View Restaurants'.html_safe, restaurants_path %>
+              </li>
+            </ul>
+          </li>
+      <% end %>
+      <% if current_user.has_total_scope? %>
+          <li class="header">Access</li>
+      <% end %>
+      <% if has_policy(Permission, %w(new index)) %>
+          <li class="treeview">
+            <a href="javascript:;">
+              <i class="fa fa-ban"></i> <span>Permissions</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li>
+                <%= link_item '<i class="fa fa-circle-o"></i> Add Permission'.html_safe, new_permission_path %>
+              </li>
+              <li>
+                <%= link_item '<i class="fa fa-circle-o"></i> View Permissions'.html_safe, permissions_path %>
+              </li>
+            </ul>
+          </li>
+      <% end %>
+      <% if has_policy(Role, %w(new index)) %>
+          <li class="treeview">
+            <a href="javascript:;">
+              <i class="fa fa-lock"></i> <span>Roles</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li>
+                <%= link_item '<i class="fa fa-circle-o"></i> Add Role'.html_safe, new_role_path %>
+              </li>
+              <li>
+                <%= link_item '<i class="fa fa-circle-o"></i> View Roles'.html_safe, roles_path %>
+              </li>
+            </ul>
+          </li>
+      <% end %>
+      <% if has_policy(User, %w(new_user index), 'Users::Registration') %>
+          <li class="treeview">
+            <a href="javascript:;">
+              <i class="fa fa-users"></i> <span>Users</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li>
+                <%= link_item '<i class="fa fa-circle-o"></i> Add User'.html_safe, new_user_inside_path %>
+              </li>
+              <li>
+                <%= link_item '<i class="fa fa-circle-o"></i> View Users'.html_safe, user_registrations_path %>
+              </li>
+            </ul>
+          </li>
+      <% end %>
+    </ul>
+  </section>
+  <!-- /.sidebar -->
+</aside>

@@ -1,0 +1,66 @@
+<section class="content-header">
+  <h1>Listing Carts</h1>
+</section>
+<section class="content">
+  <div class="box">
+    <div class="box-header with-border">
+      <h3 class="box-title">
+        Cart
+      </h3>
+      <div class="box-tools">
+        <div class="input-group input-group-sm" style="width: 150px;">
+        </div>
+      </div>
+    </div><!-- /.box-header -->
+    <div ng-controller="CartCtrl">
+      <div class="box-body table-responsive no-padding">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th class="center">Quantity</th>
+            <th class="center">Subtotal</th>
+          </tr>
+          </thead>
+          <tbody class="cart">
+          <tr ng-repeat="entry in entries" id="cart-product-{{entry.id}}" on-last-repeat>
+            <td>{{ entry.number }}</td>
+            <td>{{ entry.name }}</td>
+            <td class="product-price" id="price-product-{{entry.product_id}}">{{ entry.price }}</td>
+            <td class="center">
+              <div class="inline-flex">
+                <button class="btn btn-flat btn-xs add-product" data-id="{{entry.product_id}}" ng-click="addProduct(entry.product_id)">
+                  <i class="fa fa-plus"></i>
+                </button>
+                <div class="quantity" id="quantity-product-{{entry.product_id}}">
+                  {{ entry.quantity }}
+                </div>
+                <button class="btn btn-flat btn-xs remove-product" data-id="{{entry.product_id}}" ng-click="removeProduct(entry.product_id)">
+                  <i class="fa fa-minus"></i>
+                </button>
+                <button class="btn btn-flat btn-xs bg-red delete-product" data-id="{{entry.id}}" ng-click="deleteProductFromCart(entry.id)">
+                  <i class="fa fa-times"></i>
+                </button>
+              </div>
+            </td>
+            <td class="center subtotal" id="subtotal-product-{{entry.product_id}}">{{ entry.total_price}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="center"><b>Total:</b></td>
+            <td class="center" id="total-price"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div><!-- /.box-body -->
+    </div>
+  </div>
+  <div id="order-button">
+    <%= link_to 'Place order', place_order_path, class:'btn btn-primary' %>
+  </div>
+</section>
+

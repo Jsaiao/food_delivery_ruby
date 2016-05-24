@@ -1,0 +1,9 @@
+$('#show-product').modal('show');
+$('#product-modal').empty().append('<%= escape_javascript render('show_modal', product: @product) %>');
+
+$('.add-product').on('click', function() {
+  $.ajax({
+    type: 'POST',
+    url: '/add_product/' + $(this).data('id')
+  });
+});

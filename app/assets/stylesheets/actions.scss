@@ -1,0 +1,21 @@
+.table > thead > tr > th:last-child {
+  text-align: center;
+}
+
+.table > tbody > tr > td.actions {
+  width: 200px;
+  text-align: center;
+  div {
+    visibility: hidden;
+  }
+}
+
+.table > tbody > tr:hover {
+  td:last-child > div {
+    visibility: visible;
+  }
+}
+
+.delete-product {
+  margin-left: 10px;
+}

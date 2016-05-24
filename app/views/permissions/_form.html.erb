@@ -1,0 +1,62 @@
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <h3 class="box-title">Permission</h3>
+    <div class="box-tools">
+      <%= link_to '<i class="fa fa-arrow-left"></i> Back'.html_safe, permissions_path, class: 'btn btn-xs btn-flat bg-gray' %>
+    </div>
+  </div>
+  <!-- /.box-header -->
+  <!-- form start -->
+  <%= form_for(@permission, html: {class: 'form-horizontal'}, validate: true) do |f| %>
+      <div class="box-body">
+        <div class="form-group">
+          <%= f.label :name, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.text_field :description, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :controller, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.select :controller, @controllers.sort.collect { |c| [c.underscore.titleize, c] },
+                         {include_blank: 'Please select'},
+                         class: 'form-control', data: {url: get_controller_actions_url} %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :action, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.select :action, @actions.sort.collect { |a| [a.titleize, a] },
+                         {include_blank: 'Please select'}, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label 'Roles', class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <div class="row">
+              <%= collection_check_boxes(:permission, :role_ids, Role.all.order(:name), :id, :name) do |b| %>
+                  <div class="col-md-3 col-sm-6">
+                    <div>
+                      <%= b.label { b.check_box } %>
+                      <%= b.text %>
+                    </div>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer">
+        <div class="col-sm-offset-2">
+          <%= f.button 'Send', class: 'btn btn-primary' %>
+        </div>
+      </div>
+  <% end %>
+</div>

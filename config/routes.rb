@@ -1,56 +1,117 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  resources :roles
+  resources :permissions
+  resources :orders
+  resources :carts
+  resources :products
+  resources :addresses
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  resources :conversations do
+    resources :messages
+  end
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  get '/restaurants/:id/dishes', to: 'restaurants#dishes', as: :restaurant_dishes
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  resources :restaurants
+  devise_for :users,
+             controllers: {sessions: 'users/sessions',
+                           confirmations: 'users/confirmations',
+                           unlocks: 'users/unlocks',
+                           registrations: 'users/registrations',
+                           passwords: 'users/passwords',
+                           password_expired: 'users/password_expired'},
+             path: '/',
+             path_names: {sign_in: 'login',
+                          sign_out: 'logout'}
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  devise_scope :user do
+    post '/sign_in/mobile', to: 'users/sessions#create_mobile_session', as: :create_mobile_session
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+    authenticated :user do
+      root 'home#index', as: :authenticated_root
+    end
 
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+    unauthenticated do
+      root 'users/sessions#new', as: :unauthenticated_root
+    end
 
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
+    authenticate :user do
+      # Permite modificar la contraseña propia.
+      get '/users/change_password', to: 'users/registrations#change_password', as: :change_password
+      match '/save_password', to: 'users/registrations#save_password', as: :save_password, via: [:patch, :put]
 
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
+      # Lista todos los usuarios.
+      get '/users', to: 'users/registrations#index', as: :user_registrations
 
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+      # Permite crear usuarios.
+      get '/users/new', to: 'users/registrations#new', as: :new_user
+      post '/users', to: 'users/registrations#create', as: :create_user
+
+      # Permite crear un usuario dentro del sistema.
+      get '/users/new_user', to: 'users/registrations#new_user', as: :new_user_inside
+      post '/users/create_user', to: 'users/registrations#create_user', as: :create_user_inside
+
+      # Permite editar tu perfil.
+      get '/users/edit', to: 'users/registrations#edit', as: :edit_profile
+      match '/users', to: 'users/registrations#update', as: :update_profile, via: [:patch, :put]
+
+      # Permite editar el perfil de otros usuarios.
+      get '/users/:id/edit', to: 'users/registrations#edit_user', as: :edit_user
+      match '/users/:id', to: 'users/registrations#update_user', as: :update_user, via: [:patch, :put]
+
+      # Permite editar las contraseñas de otros usuarios.
+      get '/users/:id/change_password', to: 'users/registrations#change_user_password', as: :change_user_password
+      match '/save_password/:id', to: 'users/registrations#save_user_password', as: :save_user_password,
+            via: [:patch, :put]
+
+      # Permite visualizar a un usuario.
+      get '/users/:id', to: 'users/registrations#show', as: :user
+
+      # Nos permite obtener la imagen de un usuario.
+      match '/users/:id/get_user_image', to: 'users/registrations#get_user_image', as: :get_user_image, via: [:patch, :put]
+
+      # Permite eliminar a un usuario.
+      delete '/users/:id', to: 'users/registrations#destroy', as: :destroy_user
+    end
+  end
+
+  # Gets a JS response with all controller actions.
+  get '/permissions/new/get_controller_actions', to: 'permissions#get_controller_actions', as: :get_controller_actions
+
+  # Posts seed data from permissions in relation with their role.
+  post '/permissions/generate_seeds', to: 'permissions#generate_seeds', as: :generate_seeds
+
+  # Displays a role with every permission granted.
+  get '/roles/:role_id/permissions', to: 'roles#role_permissions', as: :role_permissions
+
+  # Creates a relationship between roles and permissions.
+  post '/roles/:role_id/assign_permissions', to: 'roles#assign_permissions', as: :assign_permissions
+
+  get '/restaurants_mobile', to: 'restaurants#index_mobile', as: :restaurants_mobile
+  get '/products_mobile/:restaurant_id', to: 'products#index_mobile', as: :products_mobile
+  get '/addresses_mobile/:id', to: 'addresses#index_mobile', as: :addresses_mobile
+  get '/orders_mobile/:id', to: 'orders#index_mobile', as: :orders_mobile
+
+  post '/add_product/:id', to: 'products#add_product_to_cart', as: :add_product_to_cart
+  post '/set_quantity/:id/:quantity', to: 'products#set_quantity', as: :set_quantity
+  post '/one_less_product/:id', to: 'products#one_less_product', as: :one_less_product
+  post '/delete_product_from_cart/:id', to: 'products#delete_product_from_cart', as: :delete_product_from_cart
+  post '/set_quantity_mobile/:id/:product_id/:quantity', to: 'products#set_quantity_mobile', as: :set_quantity_mobile
+  get '/user_cart', to: 'carts#user_cart', as: :user_cart
+  get '/generate_cart_json', to: 'carts#generate_cart_json', as: :generate_cart_json
+  get '/user_cart_mobile/:id', to: 'carts#user_cart_mobile', as: :user_cart_mobile
+  get '/get_total/:id', to: 'carts#get_total', as: :get_total
+  get '/place_order', to: 'carts#place_order', as: :place_order
+  get '/view_product/:id', to: 'products#view_product', as: :view_product
+  post '/make_order/:address_id', to: 'carts#make_order', as: :make_order
+  # Generates a xlsx file of the detailed logbook.
+  post '/generate_report', to: 'application#generate_report', as: :generate_report
+  post '/orders/generate_order_pdf/:id', to: 'orders#generate_pdf', as: :generate_order_pdf
+  get '/view_restaurant_users/:id', to: 'restaurants#view_restaurant_users', as: :view_restaurant_users
+  #get '/conversations', to: 'conversations#index', as: :conversations
+
+  #mobile
+  post '/add_product_mobile/:id/:user_id', to: 'products#add_product_to_cart_mobile', as: :add_product_to_cart_mobile
+  post '/one_less_product_mobile/:id/:user_id', to: 'products#one_less_product_mobile', as: :one_less_product_mobile
+  post '/make_order_mobile/:id/:address_id', to: 'carts#make_order_mobile', as: :make_order_mobile
 end
